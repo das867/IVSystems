@@ -9,7 +9,6 @@ Vagrant
  * Configure the Vagrantfile with these settings:
 
 ```
-#!ruby
    config.vm.box = "bento/centos-7.1"
    config.vm.provision :shell, path: "bootstrap.sh"
    config.vm.network "forwarded_port", guest: 4200, host: 4200
@@ -19,7 +18,6 @@ Vagrant
   replacing these base settings:
 
 ```
-#!ruby
     config.vm.box = "base"
 ```
 
@@ -37,7 +35,6 @@ Vagrant
 
 # Installing Dependencies
 ```
-#!ruby
     cd client
     npm install
     bower install
@@ -52,13 +49,11 @@ Things should now be ready to run
  To get both Ember and Sails server going open two terminal windows and vagrant ssh into both
  In one
  ```
- #!ruby
      cd /vagrant/client
      ember serve --watcher polling
  ```
  In the other
  ```
- #!ruby
      cd /vagrant/server
      sails lift 2
  ```
