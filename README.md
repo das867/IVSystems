@@ -60,13 +60,23 @@ Things should now be ready to run
   I can explain more later if needed but look at Vagrant, Ember, and Sails to familiarize yourself with the tech we are using
 
 # MYSQL
-At the moment MYSQL is not loading through provisions which means we have to install it every time we vagrant up which is annoying.  To upload it though follow these commands
-```
-    sudo yum install mysql-server
-    sudo systemctl start mysqld
-```
-Next to secure MYSQL we need to run
+To secure MYSQL we need to run
 ```
      sudo mysql_secure_installation
 ```
-and set root password to root and answer yes to the rest of the questions
+and set root password to root(when first asked just hit enter) and answer yes to the rest of the questions.  Next you need to create the DB in MYSQL. To do this
+```
+    mysql -u root -p
+
+    create schema comicBookShop;
+```
+# Closing Vagrant
+In order to prevent wiping everything, use
+```
+    vagrant halt
+```
+to prevent completely wiping your DB.
+To get it back up and running after halting it just run
+ ```
+    vagrant up
+```
