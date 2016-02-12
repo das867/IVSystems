@@ -25,9 +25,6 @@ module.exports = {
       type:'string',
       required:true
     },
-    publisher:{
-      model:'Publisher'
-    },
     illustrators:{
       collection:'Illustrator',
       via:'comic',

@@ -24,9 +24,6 @@ module.exports = {
     vol_num:{
       type:'integer'
     },
-    publisher:{
-      model:'Publisher'
-    },
     illustrators:{
       collection:'Illustrator',
       via:'trade',
