@@ -1,3 +1,24 @@
-<h2 id="title">Welcome to Ember</h2>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {{ link-to 'HOME' 'index' class="navbar-brand" }}
+    </div>
 
-{{outlet}}
+    <div class="collapse navbar-collapse navbar-right">
+      <ul class="nav navbar-nav">
+        {{#if session.isAuthenticated}}
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.currentUser.id}}<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li role="separator" class="divider"></li>
+                <li><a {{action 'invalidateSession'}}>Logout</a></li>
+              </ul>
+            </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  {{outlet}}
+</div>
