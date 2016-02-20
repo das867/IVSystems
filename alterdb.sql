@@ -18,6 +18,19 @@ ALTER TABLE comic ADD FOREIGN KEY (brand) REFERENCES brand(id);
 ALTER TABLE trade ADD FOREIGN KEY (brand) REFERENCES brand(id);
 ALTER TABLE figure ADD FOREIGN KEY (brand) REFERENCES brand(id);
 
+/*add FOREIGN KEY to each item for Vendor*/
+ALTER TABLE apparel MODIFY vendor_id int(10) unsigned;
+ALTER TABLE game MODIFY vendor_id int(10) unsigned;
+ALTER TABLE comic MODIFY vendor_id int(10) unsigned;
+ALTER TABLE trade MODIFY vendor_id int(10) unsigned;
+ALTER TABLE figure MODIFY vendor_id int(10) unsigned;
+
+ALTER TABLE apparel ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
+ALTER TABLE game ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
+ALTER TABLE comic ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
+ALTER TABLE trade ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
+ALTER TABLE figure ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
+
 /*add FOREIGN KEY to lineitem relating to order*/
 ALTER TABLE lineitem MODIFY order_id int(10) unsigned;
 ALTER TABLE lineitem ADD FOREIGN KEY (order_id) REFERENCES orders(id);

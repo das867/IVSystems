@@ -46,5 +46,8 @@ module.exports = {
       via:'item',
       through:'tagged_apparel'
     },
+    vendor_id:{
+      model:'Vendor'
+    }
   }
 };

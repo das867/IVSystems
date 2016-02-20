@@ -59,6 +59,8 @@ module.exports = {
       via:'item',
       through:'tagged_trade'
     },
-
+    vendor_id:{
+      model:'Vendor'
+    }
   }
 };

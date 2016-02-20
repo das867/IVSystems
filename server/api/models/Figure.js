@@ -49,5 +49,8 @@ module.exports = {
       via:'item',
       through:'tagged_figure'
     },
+    vendor_id:{
+      model:'Vendor'
+    }
   }
 };

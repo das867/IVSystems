@@ -42,5 +42,8 @@ module.exports = {
       via:'item',
       through:'tagged_game'
     },
+    vendor_id:{
+      model:'Vendor'
+    }
   }
 };

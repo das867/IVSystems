@@ -30,7 +30,7 @@ module.exports = {
       via:'comic',
       through:'comicillustrator'
     },
-    writer:{
+    writers:{
       collection:'Writer',
       via:'comic',
       through:'comicwriter'
@@ -60,6 +60,9 @@ module.exports = {
       collection:'Subscription_Box',
       via:'comic_id',
       through:'subscriber_box_comic'
+    },
+    vendor_id:{
+      model:'Vendor'
     }
   }
 };
