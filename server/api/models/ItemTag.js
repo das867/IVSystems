@@ -14,30 +14,9 @@ module.exports = {
       unique:true,
       required:true
     },
-    taggedComic:{
-      collection:'Comic',
-      via:'tag',
-      through:'tagged_comic'
-    },
-    taggedApparel:{
-      collection:'Apparel',
-      via:'tag',
-      through:'tagged_apparel'
-    },
-    taggedGame:{
-      collection:'Game',
-      via:'tag',
-      through:'tagged_game'
-    },
-    taggedFigure:{
-      collection:'Figure',
-      via:'tag',
-      through:'tagged_figure'
-    },
-    taggedTrade:{
-      collection:'Trade',
-      via:'tag',
-      through:'tagged_trade'
+    Items:{
+      collection:'Item',
+      via:'tags',
     }
   }
 };

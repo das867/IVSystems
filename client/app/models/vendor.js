@@ -6,9 +6,5 @@ export default DS.Model.extend({
   city:DS.attr(),
   state:DS.attr(),
   zipcode:DS.attr(),
-  comics:DS.hasMany('comic'),
-  trades:DS.hasMany('trade'),
-  figures:DS.hasMany('figure'),
-  apparels:DS.hasMany('apparel'),
-  games:DS.hasMany('game')
+  Items:DS.hasMany('item'),
 });

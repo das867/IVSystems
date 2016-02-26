@@ -34,24 +34,8 @@ module.exports = {
       type:'string',
       required:true
     },
-    comics:{
-      collection:'Comic',
-      via:'vendor_id'
-    },
-    trades:{
-      collection:'Trade',
-      via:'vendor_id'
-    },
-    figures:{
-      collection:'Figure',
-      via:'vendor_id'
-    },
-    apparels:{
-      collection:'Apparel',
-      via:'vendor_id'
-    },
-    games:{
-      collection:'Game',
+    Items:{
+      collection:'Item',
       via:'vendor_id'
     }
   }

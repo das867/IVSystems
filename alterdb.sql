@@ -59,14 +59,18 @@ ALTER TABLE tagged_figure ADD FOREIGN KEY (item) REFERENCES figure(isbn);
 ALTER TABLE collectedcomic ADD FOREIGN KEY (comic) REFERENCES comic(isbn);
 ALTER TABLE collectedcomic ADD FOREIGN KEY (trade) REFERENCES trade(isbn);
 
-/*Add FOREIGN KEY to TradeWriter TradeIllustrator ComicWriter ComicIllustrator*/
+/*Add FOREIGN KEY to TradeWriter TradeIllustrator ComicWriter ComicIllustrator */
 ALTER TABLE tradewriter ADD FOREIGN KEY (trade) REFERENCES trade(isbn);
 ALTER TABLE comicwriter ADD FOREIGN KEY (comic) REFERENCES comic(isbn);
 ALTER TABLE tradeillustrator ADD FOREIGN KEY (trade) REFERENCES trade(isbn);
 ALTER TABLE comicillustrator ADD FOREIGN KEY (comic) REFERENCES comic(isbn);
 ALTER TABLE tradewriter MODIFY writer int(10) unsigned;
 ALTER TABLE comicwriter MODIFY writer int(10) unsigned;
+ALTER TABLE tradewriter ADD FOREIGN KEY (writer) REFERENCES writer(id);
+ALTER TABLE comicwriter ADD FOREIGN KEY (writer) REFERENCES writer(id);
 ALTER TABLE tradeillustrator MODIFY illustrator int(10) unsigned;
 ALTER TABLE comicillustrator MODIFY illustrator int(10) unsigned;
 ALTER TABLE tradeillustrator ADD FOREIGN KEY (illustrator) REFERENCES illustrator(id);
 ALTER TABLE comicillustrator ADD FOREIGN KEY (illustrator) REFERENCES illustrator(id);
+
+/*Add FOREIGN KEY to User table to Auth*/
