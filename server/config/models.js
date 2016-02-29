@@ -17,8 +17,8 @@ module.exports.models = {
   * connections (see `config/connections.js`)                                *
   *                                                                          *
   ***************************************************************************/
-  //connection: 'mysql',
-  connection: 'localDiskDb',
+  connection: 'mysql',
+  //connection: 'localDiskDb',
 
   /***************************************************************************
   *                                                                          *

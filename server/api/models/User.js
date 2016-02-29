@@ -20,6 +20,10 @@ module.exports = {
     last_name:{
       type:'string'
     },
+    isAdmin:{
+      type:'boolean',
+      defaultsTo:false,
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.attempts;

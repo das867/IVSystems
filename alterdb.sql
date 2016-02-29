@@ -1,76 +1,15 @@
-/*Add FOREIGN KEY references to lineitem table*/
-ALTER TABLE lineitem ADD FOREIGN KEY (comic_id) REFERENCES comic(isbn);
-ALTER TABLE lineitem ADD FOREIGN KEY (apparel_id) REFERENCES apparel(isbn);
-ALTER TABLE lineitem ADD FOREIGN KEY (game_id) REFERENCES game(isbn);
-ALTER TABLE lineitem ADD FOREIGN KEY (figure_id) REFERENCES figure(isbn);
-ALTER TABLE lineitem ADD FOREIGN KEY (trade_id) REFERENCES trade(isbn);
+/*Adding users to DB*/
+INSERT INTO auth (user,id,username,password) VALUES(1,null,'shopowner','$2a$10$pIihiWSRtvqlKAojIA7IxugI90AVW1HRY/Ljr/A6pzjNIjYaSyCwe');
+INSERT INTO user (auth,id,first_name,last_name,isAdmin) VALUES(1,null,'John','Doe',true);
 
-/*add FOREIGN KEY to each item for Brand*/
-ALTER TABLE apparel MODIFY brand int(10) unsigned;
-ALTER TABLE game MODIFY brand int(10) unsigned;
-ALTER TABLE comic MODIFY brand int(10) unsigned;
-ALTER TABLE trade MODIFY brand int(10) unsigned;
-ALTER TABLE figure MODIFY brand int(10) unsigned;
+INSERT INTO auth (user,id,username,password) VALUES(2,null,'employee1','$2a$10$Acm1F40ohRARO.s1MG03Me6LUcTE4qvPOKVKJPPajA26xW556x7fC');
+INSERT INTO user (auth,id,first_name,last_name,isAdmin) VALUES(2,null,'Jane','Doe',false);
 
-ALTER TABLE apparel ADD FOREIGN KEY (brand) REFERENCES brand(id);
-ALTER TABLE game ADD FOREIGN KEY (brand) REFERENCES brand(id);
-ALTER TABLE comic ADD FOREIGN KEY (brand) REFERENCES brand(id);
-ALTER TABLE trade ADD FOREIGN KEY (brand) REFERENCES brand(id);
-ALTER TABLE figure ADD FOREIGN KEY (brand) REFERENCES brand(id);
+INSERT INTO auth (user,id,username,password) VALUES(3,null,'employee2','$2a$10$rp4qJ7qcpZa1kcAzf5r6q.EXct55dCGkqElp9uT3/J.1bbnaWHKwm');
+INSERT INTO user (auth,id,first_name,last_name,isAdmin) VALUES(3,null,'Steve','Rogers',false);
 
-/*add FOREIGN KEY to each item for Vendor*/
-ALTER TABLE apparel MODIFY vendor_id int(10) unsigned;
-ALTER TABLE game MODIFY vendor_id int(10) unsigned;
-ALTER TABLE comic MODIFY vendor_id int(10) unsigned;
-ALTER TABLE trade MODIFY vendor_id int(10) unsigned;
-ALTER TABLE figure MODIFY vendor_id int(10) unsigned;
+INSERT INTO auth (user,id,username,password) VALUES(4,null,'employee3','$2a$10$kp0e.OlkkPuXu3fYyo/fuuT5WpGxreapZPDCApAiOwaMyqy7.8BUa');
+INSERT INTO user (auth,id,first_name,last_name,isAdmin) VALUES(4,null,'Biblo','Baggins',false);
 
-ALTER TABLE apparel ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
-ALTER TABLE game ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
-ALTER TABLE comic ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
-ALTER TABLE trade ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
-ALTER TABLE figure ADD FOREIGN KEY (vendor_id) REFERENCES vendor(id);
-
-/*add FOREIGN KEY to lineitem relating to order*/
-ALTER TABLE lineitem MODIFY order_id int(10) unsigned;
-ALTER TABLE lineitem ADD FOREIGN KEY (order_id) REFERENCES orders(id);
-
-/*Add FOREIGN KEY to subscriber_box_comic and subscription_box*/
-ALTER TABLE subscriber_box_comic MODIFY box_id int(10) unsigned;
-ALTER TABLE subscriber_box_comic ADD FOREIGN KEY (box_id) REFERENCES subscription_box(id);
-ALTER TABLE subscriber_box_comic ADD FOREIGN KEY (comic_id) REFERENCES comic(isbn);
-ALTER TABLE subscription_box MODIFY subscriber int(10) unsigned;
-ALTER TABLE subscription_box ADD FOREIGN KEY (subscriber) REFERENCES member(id);
-
-/*Add FOREIGN KEY to Tagged Items*/
-ALTER TABLE tagged_game ADD FOREIGN KEY (tag) REFERENCES itemtag(name);
-ALTER TABLE tagged_comic ADD FOREIGN KEY (tag) REFERENCES itemtag(name);
-ALTER TABLE tagged_trade ADD FOREIGN KEY (tag) REFERENCES itemtag(name);
-ALTER TABLE tagged_apparel ADD FOREIGN KEY (tag) REFERENCES itemtag(name);
-ALTER TABLE tagged_figure ADD FOREIGN KEY (tag) REFERENCES itemtag(name);
-
-ALTER TABLE tagged_game ADD FOREIGN KEY (item) REFERENCES game(isbn);
-ALTER TABLE tagged_comic ADD FOREIGN KEY (item) REFERENCES comic(isbn);
-ALTER TABLE tagged_trade ADD FOREIGN KEY (item) REFERENCES trade(isbn);
-ALTER TABLE tagged_apparel ADD FOREIGN KEY (item) REFERENCES apparel(isbn);
-ALTER TABLE tagged_figure ADD FOREIGN KEY (item) REFERENCES figure(isbn);
-
-/*Add FOREIGN KEY to CollectedComic*/
-ALTER TABLE collectedcomic ADD FOREIGN KEY (comic) REFERENCES comic(isbn);
-ALTER TABLE collectedcomic ADD FOREIGN KEY (trade) REFERENCES trade(isbn);
-
-/*Add FOREIGN KEY to TradeWriter TradeIllustrator ComicWriter ComicIllustrator */
-ALTER TABLE tradewriter ADD FOREIGN KEY (trade) REFERENCES trade(isbn);
-ALTER TABLE comicwriter ADD FOREIGN KEY (comic) REFERENCES comic(isbn);
-ALTER TABLE tradeillustrator ADD FOREIGN KEY (trade) REFERENCES trade(isbn);
-ALTER TABLE comicillustrator ADD FOREIGN KEY (comic) REFERENCES comic(isbn);
-ALTER TABLE tradewriter MODIFY writer int(10) unsigned;
-ALTER TABLE comicwriter MODIFY writer int(10) unsigned;
-ALTER TABLE tradewriter ADD FOREIGN KEY (writer) REFERENCES writer(id);
-ALTER TABLE comicwriter ADD FOREIGN KEY (writer) REFERENCES writer(id);
-ALTER TABLE tradeillustrator MODIFY illustrator int(10) unsigned;
-ALTER TABLE comicillustrator MODIFY illustrator int(10) unsigned;
-ALTER TABLE tradeillustrator ADD FOREIGN KEY (illustrator) REFERENCES illustrator(id);
-ALTER TABLE comicillustrator ADD FOREIGN KEY (illustrator) REFERENCES illustrator(id);
-
-/*Add FOREIGN KEY to User table to Auth*/
+INSERT INTO auth (user,id,username,password) VALUES(5,null,'employee4','$2a$10$QNxXUdfjy1CZo0Sb7UFW9uFZdqg26.HpY/2naa83Phiu4ornnNCMe');
+INSERT INTO user (auth,id,first_name,last_name,isAdmin) VALUES(5,null,'Random','Guy',false);
