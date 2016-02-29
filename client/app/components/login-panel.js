@@ -5,10 +5,15 @@ export default Ember.Component.extend({
 
   actions: {
     authenticate: function() {
+      var _this = this;
       var credentials = this.getProperties('identification', 'password'),
         authenticator = 'authenticator:jwt';
 
-      this.get('session').authenticate(authenticator, credentials);
+      this.get('session').authenticate(authenticator, credentials).then(function(){
+        $('#wrapper').removeClass('toggled');
+      }).catch(function(error){
+        $('#login-error').modal('toggle');
+      });
     }
   }
 });
