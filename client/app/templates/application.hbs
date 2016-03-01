@@ -1,3 +1,51 @@
-<h2 id="title">Welcome to Ember</h2>
+<nav class="navbar navbar-default navbar-fixed-top" style="margin:0;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {{ link-to 'IVS Managment Systems' 'index' class="navbar-brand" }}
+    </div>
 
-{{outlet}}
+    <div class="navbar-right">
+      <ul class="nav navbar-nav">
+        {{#if session.isAuthenticated}}
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.currentUser.id}}<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li role="separator" class="divider"></li>
+                <li><a {{action 'invalidateSession'}}>Logout</a></li>
+              </ul>
+            </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="toggled" id="wrapper">
+
+  <div  id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li>
+      {{link-to 'View Inventory' 'index' }}
+    </li>
+    <li>
+      {{link-to 'Search' 'index'}}
+    </li>
+    <li>
+      {{link-to 'Subscriptions' 'index'}}
+    </li>
+    <li>
+      {{link-to 'Add Inventory' 'index'}}
+    </li>
+    <li>
+      {{link-to 'File Request' 'index'}}
+    </li>
+    <li>
+      {{link-to 'Help' 'index'}}
+    </li>
+  </ul>
+</div>
+
+  <div id="page-content-wrapper">
+      {{outlet}}
+
+  </div>
+</div>

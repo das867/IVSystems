@@ -2,6 +2,16 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicy: {
+    'default-src': "'none'",
+    'script-src': "'self' ",
+    'font-src': "'self'",
+    'connect-src': "'self' *",
+    'img-src': "'self' data: http://localhost:1337 ",
+    'style-src': "'self' 'unsafe-inline' *",
+    'media-src': "'self'",
+    'frame-src': "'self' "
+    },
     modulePrefix: 'client',
     environment: environment,
     baseURL: '/',
@@ -18,7 +28,18 @@ module.exports = function(environment) {
       // when it is created
     }
   };
-
+  ENV['ember-simple-auth'] = {
+    authorizer: 'authorizer:token',
+    crossOriginWhitelist: ['http://localhost:1337'],
+    authenticationRoute: 'login'
+  };
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: 'http://localhost:1337/api/v1/auths/login',
+    identificationField: 'username',
+    passwordField: 'password',
+    tokenPropertyName: 'access_token',
+    tokenExpireName: 'expires',
+  };
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

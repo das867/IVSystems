@@ -21,15 +21,10 @@ module.exports = {
       type:'string',
       required:true
     },
-    tradebooks:{
-      collection:'Trade',
-      via:'writer',
-      through:'tradewriter'
-    },
-    comicbooks:{
-      collection:'Comic',
-      via:'writer',
-      through:'comicwriter'
+    Items:{
+      collection:'Item',
+      via:'Writers',
+      //through:'tradewriter'
     }
   }
 };

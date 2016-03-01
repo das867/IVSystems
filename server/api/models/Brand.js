@@ -17,24 +17,8 @@ module.exports = {
       type:'string',
       required:true
     },
-    comics:{
-      collection:'Comic',
-      via:'brand'
-    },
-    trades:{
-      collection:'Trade',
-      via:'brand'
-    },
-    figures:{
-      collection:'Figure',
-      via:'brand'
-    },
-    apparels:{
-      collection:'Apparel',
-      via:'brand'
-    },
-    games:{
-      collection:'Game',
+    Items:{
+      collection:'Item',
       via:'brand'
     }
   }

@@ -17,10 +17,10 @@ module.exports = {
       model:'Member',
       unique:true
     },
-    comics:{
-      collection:'Comic',
-      via:'box_id',
-      through:'subscriber_box_comic'
+    Items:{
+      collection:'Item',
+      via:'subscriptions',
+      //through:'subscriber_box_comic'
     }
   }
 };

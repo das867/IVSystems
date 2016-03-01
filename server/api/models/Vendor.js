@@ -33,6 +33,10 @@ module.exports = {
     zipcode:{
       type:'string',
       required:true
+    },
+    Items:{
+      collection:'Item',
+      via:'vendor_id'
     }
   }
 };

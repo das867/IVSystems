@@ -1,0 +1,12 @@
+<form {{action 'authenticate' on='submit'}} class="form-horizontal login-panel">
+  <div class="form-group">
+    <label class="col-xs-4">Username</label>
+    {{input type="text" required=true value=identification class="col-xs-6"}}
+  </div>
+  <div class="form-group">
+    <label class="col-xs-4">Password</label>
+    {{input type="password" required=true value=password class="col-xs-6"}}
+  </div>
+  <br>
+  <button class='btn btn-primary col-xs-6 col-xs-offset-3' type='submit'>Login</button>
+</form>

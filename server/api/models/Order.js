@@ -23,7 +23,7 @@ module.exports = {
     },
     type:{
       type:'string',
-      enum:['reorder','reciept','removal','add']
+      enum:['reorder','reciept','removal','add','return']
     },
     lineitems:{
       collection:'LineItem',

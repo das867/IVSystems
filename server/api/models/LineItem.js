@@ -13,20 +13,8 @@ module.exports = {
       autoIncrement:true,
       primaryKey:true
     },
-    comic_id:{
-      model:'Comic',
-    },
-    apparel_id:{
-      model:'Apparel'
-    },
-    figure_id:{
-      model:'Figure'
-    },
-    game_id:{
-      model:'Game'
-    },
-    trade_id:{
-      model:'Trade'
+    item_id:{
+      model:'Item'
     },
     subTotal:{
       type:'float',
