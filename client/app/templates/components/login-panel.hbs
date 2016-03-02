@@ -1,4 +1,6 @@
-<form {{action 'authenticate' on='submit'}} class="form-horizontal login-panel">
+<div class="panel panel-default" style=" border-radius:35px;">
+  <div class="panel-body">
+<form {{action 'authenticate' on='submit'}} class="form-horizontal" style="margin-top:25px;">
   <div class="form-group">
     <label class="col-xs-4">Username</label>
     {{input type="text" required=true value=identification class="col-xs-6"}}
@@ -10,3 +12,5 @@
   <br>
   <button class='btn btn-primary col-xs-6 col-xs-offset-3' type='submit'>Login</button>
 </form>
+</div>
+</div>

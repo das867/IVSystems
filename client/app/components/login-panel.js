@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+
   session: Ember.inject.service('session'),
 
   actions: {
@@ -10,7 +11,7 @@ export default Ember.Component.extend({
         authenticator = 'authenticator:jwt';
 
       this.get('session').authenticate(authenticator, credentials).then(function(){
-        $('#wrapper').removeClass('toggled');
+        $('#wrapper').toggleClass('toggled');
       }).catch(function(error){
         $('#login-error').modal('toggle');
       });
