@@ -19,7 +19,6 @@
                 {{#if session.currentUser.isAdmin}}
                 <li>{{link-to 'Admin Menu' 'adminpage'}}</li>
                 {{/if}}
-                <li><a {{action 'toggleSideBar'}}>Toggle Menu</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a {{action 'invalidateSession'}}>Logout</a></li>
               </ul>
@@ -30,6 +29,31 @@
   </div>
 </nav>
 <div id="wrapper">
-  {{outlet}}
+  <div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li>
+      {{link-to 'View Inventory' 'view_inventory' }}
+    </li>
+    <li>
+      {{link-to 'Search' 'index'}}
+    </li>
+    <li>
+      {{link-to 'Subscriptions' 'subscriptions'}}
+    </li>
+    <li>
+      {{link-to 'Add Inventory' 'index'}}
+    </li>
+    <li>
+      {{link-to 'File Request' 'index'}}
+    </li>
+    <li>
+      {{link-to 'Help' 'index'}}
+    </li>
+  </ul>
+  </div>
+
+  <div id="page-content-wrapper">
+      {{outlet}}
+  </div>
 </div>
 {{login-error-message}}

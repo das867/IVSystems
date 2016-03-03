@@ -12,9 +12,5 @@ export default Ember.Controller.extend({
         method: 'GET',
       });
     },
-    toggleSideBar(){
-      $('#sidebar-wrapper').toggleClass('show');
-
-    }
   }
 });

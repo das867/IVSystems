@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  didInsertElement() {
+    this._super(...arguments);
+    $('#sidebar-wrapper').addClass('login-screen');
+  },
 
   session: Ember.inject.service('session'),
 
@@ -11,7 +15,7 @@ export default Ember.Component.extend({
         authenticator = 'authenticator:jwt';
 
       this.get('session').authenticate(authenticator, credentials).then(function(){
-        $('#wrapper').toggleClass('toggled');
+        $('#sidebar-wrapper').removeClass('login-screen');
       }).catch(function(error){
         $('#login-error').modal('toggle');
       });

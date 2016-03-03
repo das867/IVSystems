@@ -12,6 +12,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
     $('#login-error').modal('toggle');
     transition.abort();
     this.transitionTo('/');
-
+  },
+  actions:{
+    willTransition(transition){
+      if(transition.targetName==='index'){
+        $('#sidebar-wrapper').toggleClass('hidden');
+        return true;
+      }
+    }
   }
 });
