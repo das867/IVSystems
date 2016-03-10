@@ -1,36 +1,57 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  isbn:DS.attr(),
+  comic:DS.attr('boolean'),
+  figure:DS.attr('boolean'),
+  game:DS.attr('boolean'),
+  trade:DS.attr('boolean'),
+  apparel:DS.attr('boolean'),
   price:DS.attr(),
   name:DS.attr(),
   lineitems:DS.hasMany('line-item'),
   tags:DS.hasMany('item-tag'),
   vendor_id:DS.belongsTo('vendor'),
   brand:DS.belongsTo('brand'),
-  collects:DS.hasMany('item'),
+  collects:DS.hasMany('item',{ inverse: 'includedIn' }),
   //For Trades
-  trade:DS.attr('boolean'),
+
   vol_num:DS.attr(),
   Illustrators:DS.hasMany('illustrator'),
   Writers:DS.hasMany('writer'),
   quanity:DS.attr(),
   bindingType:DS.attr(),
   //For apparel
-  apparel:DS.attr('boolean'),
+
   size:DS.attr(),
   gender:DS.attr(),
   //For Comics
-  comic:DS.attr('boolean'),
+
   issue_num:DS.attr(),
-  includedIn:DS.hasMany('item'),
+  includedIn:DS.hasMany('item', {inverse: 'collects'}),
   subscriptions:DS.hasMany('subscription_box'),
   //For Figures
-  figure:DS.attr('boolean'),
+
   figureType:DS.attr(),
   materialType:DS.attr(),
   //For games
-  game:DS.attr('boolean'),
+
   gameType:DS.attr(),
+  typeName:Ember.computed('comic','trade','game','apparel','figure', function(){
+    if(this.comic){
+      return "comic";
+    }
+    if(this.trade){
+      return "trade";
+    }
+    if(this.game){
+      return "game";
+    }
+    if(this.apparel){
+      return "apparel";
+    }
+    if(this.figure){
+      return "figure";
+    }
+  })
 
 });

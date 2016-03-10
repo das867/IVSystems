@@ -1,16 +1,16 @@
 <nav class="navbar navbar-default navbar-fixed-top" style="margin:0;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-menu" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" {{action "toggleSideBar"}} aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      {{ link-to 'IVS Managment Systems' 'index' class="navbar-brand" }}
+      {{ link-to 'IVS Managment Systems' 'general.view_inventory' class="navbar-brand" }}
     </div>
 
-    <div class="collapse navbar-collapse" id="user-menu">
+    <div class="collapse navbar-collapse" >
       <ul class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}
           <li class="dropdown">
@@ -28,32 +28,5 @@
     </div>
   </div>
 </nav>
-<div id="wrapper">
-  <div id="sidebar-wrapper">
-  <ul class="sidebar-nav">
-    <li>
-      {{link-to 'View Inventory' 'view_inventory' }}
-    </li>
-    <li>
-      {{link-to 'Search' 'index'}}
-    </li>
-    <li>
-      {{link-to 'Subscriptions' 'subscriptions'}}
-    </li>
-    <li>
-      {{link-to 'Add Inventory' 'index'}}
-    </li>
-    <li>
-      {{link-to 'File Request' 'index'}}
-    </li>
-    <li>
-      {{link-to 'Help' 'index'}}
-    </li>
-  </ul>
-  </div>
-
-  <div id="page-content-wrapper">
-      {{outlet}}
-  </div>
-</div>
+{{outlet}}
 {{login-error-message}}

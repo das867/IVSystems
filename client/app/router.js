@@ -7,9 +7,12 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
-  this.route('view_inventory');
-  this.route('subscriptions');
   this.route('adminpage');
+  this.route('general', {path:'/'}, function() {
+    this.route('add_inventory');
+    this.route('view_inventory');
+    this.route('subscriptions');
+  });
 });
 
 export default Router;

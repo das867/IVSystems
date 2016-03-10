@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    isbn:{
+    id:{
       type:'string',
       primaryKey:true,
       required:true,

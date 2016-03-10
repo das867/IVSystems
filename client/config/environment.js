@@ -31,7 +31,9 @@ module.exports = function(environment) {
   ENV['ember-simple-auth'] = {
     authorizer: 'authorizer:token',
     crossOriginWhitelist: ['http://localhost:1337'],
-    authenticationRoute: 'login'
+    authenticationRoute: 'login',
+    routeAfterAuthentication:'general.view_inventory',
+    routeIfAlreadyAuthenticated:'general.view_inventory'
   };
   ENV['ember-simple-auth-token'] = {
     serverTokenEndpoint: 'http://localhost:1337/api/v1/auths/login',
