@@ -1,1 +1,237 @@
-{{add-inventory id=id name=model.name typeName=model.typeName quanity=model.quanity issue_num=model.issue_num size=model.size gender=model.gender brand=model.brand price=model.price vol_num=model.vol_num bindingType=model.bindingType trade=model.trade apparel=model.apparel comic=model.comic includedIn=model.includedIn collects=model.collects figure=model.figure figureType=model.figureType materialType=model.materialType game=model.game gameType=model.gameType tags=model.tags}}
+<div class="row">
+  <div class="col-xs-12">
+    <div class="add-inven-message">
+      <h4 class="text-center">Scan for or manually enter a barcode below</h4>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group ">
+      {{input type='text' value=id placeholder="Barcode"  style="width:100%;" focus-out="alertToNoItem" class="form-control input-lg"}}
+    </div>
+  </div>
+</div>
+<div class="alert alert-danger hidden no-item-found" role="alert">No Item Found</div>
+<hr style="margin-top:10px;margin-bottom:10px">
+<div class="container-fluid add-inventory-form">
+  <form>
+    <div class="row add-inventory-form-header">
+      <div class="col-xs-8">
+        <label for='name'>NAME</label>
+      </div>
+      <div class="col-xs-2">
+        <label for='condition'>COND</label>
+      </div>
+      <div class="col-xs-2">
+        <label for='quantiy'>QTY</label>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-8">
+        {{input id='name' type="text" value=item.name placeholder='Enter Name' class='form-control'}}
+      </div>
+      <div class="col-xs-2">
+        {{input id='condition' type="text"  class='form-control'}}
+      </div>
+      <div class="col-xs-2">
+        {{input id='quanity' type="text" value=item.quanity class='form-control'}}
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="row add-inventory-form-header" style="border-right:0px;">
+          <div class="col-xs-8">
+            <label for='category'>Category</label>
+          </div>
+          <div class="col-xs-4">
+            <label for='price'>Price</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-8">
+            {{ember-selectize
+              content=itemTypes
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=type
+              value=item.typeName
+              placeholder="Select an item" }}
+          </div>
+          <div class="col-xs-4">
+            {{input id='price' type="text" value=item.price class='form-control'}}
+          </div>
+        </div>
+        <br>
+        {{#if item.comic}}
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-4">
+            <label for='writer'>Writer</label>
+          </div>
+          <div class="col-xs-4">
+            <label for='illustrator'>Illustrator</label>
+          </div>
+          <div class="col-xs-4">
+            <label for='issue_num'>Issue Number</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-4">
+            {{input id='writer' type="text" class='form-control'}}
+          </div>
+          <div class="col-xs-4">
+            {{input id='illustrator' type="text" class='form-control'}}
+          </div>
+          <div class="col-xs-4">
+            {{input id='issue_num' type="text" value=item.issue_num class='form-control'}}
+          </div>
+        </div>
+        <br>
+        {{/if}}
+
+        {{#if item.trade}}
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-3">
+            <label for='writer'>Writer</label>
+          </div>
+          <div class="col-xs-3">
+            <label for='illustrator'>Illustrator</label>
+          </div>
+          <div class="col-xs-3">
+            <label for='vol_num'>Volume Number</label>
+          </div>
+          <div class="col-xs-3">
+            <label for='bindingType'>Binding Type</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-3">
+            {{input id='writer' type="text" class='form-control'}}
+          </div>
+          <div class="col-xs-3">
+            {{input id='illustrator' type="text" class='form-control'}}
+          </div>
+          <div class="col-xs-3">
+            {{input id='vol_num' type="text" value=item.vol_num class='form-control'}}
+          </div>
+          <div class="col-xs-3">
+            {{ember-selectize
+              content=bindingChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=bindingChoice
+              value=item.bindingType
+              placeholder="Select an item" }}
+          </div>
+        </div>
+        <br>
+        {{/if}}
+
+        {{#if item.apparel}}
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-6">
+            <label for='size'>Size</label>
+          </div>
+          <div class="col-xs-6">
+            <label for='gender'>Gender</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=sizeChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=sizeChoice
+              value=item.size
+              placeholder="Select an item" }}
+          </div>
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=genderTypes
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=genderChoice
+              value=item.gender
+              placeholder="Select an item" }}
+          </div>
+        </div>
+        <br>
+        {{/if}}
+
+        {{#if item.figure}}
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-6">
+            <label for='figureType'>Figure Type</label>
+          </div>
+          <div class="col-xs-6">
+            <label for='materialType'>Material Type</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=figureChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=figureChoice
+              value=item.figureType
+              placeholder="Select an item" }}
+          </div>
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=materialChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=materialChoice
+              value=item.materialType
+              placeholder="Select an item" }}
+          </div>
+        </div>
+        <br>
+        {{/if}}
+        {{#if item.game}}
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-12">
+            <label for='gameType'>Game Type</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-12">
+            {{ember-selectize
+              content=gameChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=gameChoice
+              value=item.gameType
+              placeholder="Select an item" }}
+          </div>
+        </div>
+        <br>
+        {{/if}}
+      </div>
+      <div class="col-xs-6">
+        <div class="row add-inventory-form-header" style="border-left:0px;">
+          <div class="col-xs-12">
+            <label for='tags'>Add Tags</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-12">
+            {{input id='tags' type="text"  class='form-control'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </form>
+</div>
