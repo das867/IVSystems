@@ -15,11 +15,11 @@ module.exports = {
     },
     price:{
       type:'string',
-      required:true
+      //required:true
     },
     name:{
       type:'string',
-      required:true
+      //required:true
     },
     lineitems:{
       collection:'LineItem',
@@ -56,7 +56,7 @@ module.exports = {
     },
     quanity:{
       type:'integer',
-      required:true
+      //required:true
     },
     bindingType:{
       type:'string',
@@ -69,12 +69,12 @@ module.exports = {
     },
     size:{
       type:'string',
-      required:true
+      //required:true
     },
     gender:{
       type:'string',
       enum:['male','female','unisex'],
-      required:true
+      //required:true
     },
     //For Comics
     comic:{
@@ -83,7 +83,7 @@ module.exports = {
     },
     issue_num:{
       type:'integer',
-      required:true
+      //required:true
     },
     collects:{
       collection:'Item',
@@ -104,7 +104,7 @@ module.exports = {
     //For Figures
     figure:{
       type:'boolean',
-      defaultsTo:false
+      //defaultsTo:false
     },
     figureType:{
       type:'string',
@@ -122,7 +122,7 @@ module.exports = {
     gameType:{
       type:'string',
       enum:['board','card','dice','role playing'],
-      required:true
+      //required:true
     },
   }
 };

@@ -47,6 +47,14 @@ module.exports.connections = {
     password: 'root',
     database: 'comicBookShop'
   },
+  rettsmysql: {
+    adapter: 'sails-mysql',
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    port:'8889',
+    database: 'comicBookShop'
+  },
 
   /***************************************************************************
   *                                                                          *

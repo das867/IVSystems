@@ -1,12 +1,12 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  comic:DS.attr('boolean'),
-  figure:DS.attr('boolean'),
-  game:DS.attr('boolean'),
-  trade:DS.attr('boolean'),
-  apparel:DS.attr('boolean'),
-  price:DS.attr(),
+  comic:DS.attr('boolean',{ defaultValue: false }),
+  figure:DS.attr('boolean',{ defaultValue: false }),
+  game:DS.attr('boolean',{ defaultValue: false }),
+  trade:DS.attr('boolean',{ defaultValue: false }),
+  apparel:DS.attr('boolean',{ defaultValue: false }),
+  price:DS.attr('dollars'),
   name:DS.attr(),
   lineitems:DS.hasMany('line-item'),
   tags:DS.hasMany('item-tag'),
@@ -37,21 +37,23 @@ export default DS.Model.extend({
 
   gameType:DS.attr(),
   typeName:Ember.computed('comic','trade','game','apparel','figure', function(){
-    if(this.comic){
-      return "comic";
-    }
-    if(this.trade){
+
+    if(this.get('trade')){
       return "trade";
     }
-    if(this.game){
+    if(this.get('comic')){
+      return "comic";
+    }
+    if(this.get('game')){
       return "game";
     }
-    if(this.apparel){
+    if(this.get('apparel')){
       return "apparel";
     }
-    if(this.figure){
+    if(this.get('figure')){
       return "figure";
     }
+    return null;
   })
 
 });

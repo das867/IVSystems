@@ -15,64 +15,93 @@ export default Ember.Component.extend({
   materialChoice:null,
   bindingChoices:[{name:'hardback'},{name:'paperback'}],
   bindingChoice:null,
+  writersOptions:[],
+  illustratorOptions:[],
+  tagOptions:[],
   bindingOberserver:Ember.observer('bindingType','bindingChoice',function(){
+
     if(this.bindingChoice!=null){
       this.set('bindingType',this.bindingChoice.name);
     }
   }),
   materialObserver:Ember.observer('materialType','materialChoice',function(){
+
+
     if(this.materialChoice!=null){
       this.set('materialType',this.materialChoice.name);
     }
   }),
   gameObserver:Ember.observer('gameType','gameChoice',function(){
+
+
     if(this.gameChoice!=null){
       this.set('gameType',this.gameChoice.name);
     }
   }),
   figureObserver:Ember.observer('figureType','figureChoice', function(){
+    var item = this.get('item');
+
     if(this.figureChoice!=null){
       this.set('figureType',this.figureChoice.name);
     }
   }),
   sizeObserver:Ember.observer('size','sizeChoice',function(){
+    var item = this.get('item');
+
     if(this.sizeChoice!=null){
       this.set('size',this.sizeChoice.name);
     }
 
   }),
   genderObserver:Ember.observer('gender','genderChoice',function(){
+    var item = this.get('item');
+
     if(this.genderChoice!=null){
       this.set('gender',this.genderChoice.name);
     }
   }),
   typeObserver:Ember.observer('type',function(){
+    var item=this.get('item');
+    if(this.type.name==='comic' || this.type.name==='trade'){
+      this.set('book',true);
+    }else{
+      this.set('book',false);
+    }
     switch (this.type.name) {
-      case 'comic': this.set('trade',false);this.set('figure',false);
-        this.set('game',false); this.set('apparel',false);
-        this.set('comic',true); this.set('typeName','comic');
-        console.log(this.get('typeName'));
+      case 'comic': item.set('trade',false);item.set('figure',false);
+        item.set('game',false); item.set('apparel',false);
+        item.set('comic',true); item.set('typeName','comic');
         break;
-      case 'trade':  this.set('trade',true);this.set('figure',false);
-        this.set('game',false); this.set('apparel',false);
-        this.set('comic',false); this.set('typeName','trade');
-        console.log(this.get('typeName'));
+      case 'trade':  item.set('trade',true);item.set('figure',false);
+        item.set('game',false); item.set('apparel',false);
+        item.set('comic',false); item.set('typeName','trade');
         break;
-      case 'figure': this.set('trade',false);this.set('figure',true);
-        this.set('game',false); this.set('apparel',false);
-        this.set('comic',false); this.set('typeName','figure');
-        console.log(this.get('typeName'));
+      case 'figure': item.set('trade',false);item.set('figure',true);
+        item.set('game',false); item.set('apparel',false);
+        item.set('comic',false); item.set('typeName','figure');
         break;
-      case 'game':  this.set('trade',false);this.set('figure',false);
-        this.set('game',true); this.set('apparel',false);
-        this.set('comic',false); this.set('typeName','game');
-        console.log(this.get('typeName'));
+      case 'game':  item.set('trade',false);item.set('figure',false);
+        item.set('game',true); item.set('apparel',false);
+        item.set('comic',false); item.set('typeName','game');
         break;
-      case 'apparel':  this.set('trade',false);this.set('figure',false);
-        this.set('game',false); this.set('apparel',true);
-        this.set('comic',false); this.set('typeName','apparel');
-        console.log(this.get('typeName'));break;
+      case 'apparel':  item.set('trade',false);item.set('figure',false);
+        item.set('game',false); item.set('apparel',true);
+        item.set('comic',false);item.set('typeName','apparel');
+        console.log(item.get('typeName'));
+        break;
       default:break;
     }
   }),
+  actions:{
+    alertToNoItem(){
+      this.sendAction('alertToNoItem');
+    },
+    addItem(value){
+      console.log(value);
+      this.sendAction('addItem');
+    },
+    createNewItem(){
+      this.sendAction('createNewItem');
+    }
+  }
 });
