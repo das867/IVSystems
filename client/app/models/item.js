@@ -1,36 +1,59 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  isbn:DS.attr(),
-  price:DS.attr(),
+  comic:DS.attr('boolean',{ defaultValue: false }),
+  figure:DS.attr('boolean',{ defaultValue: false }),
+  game:DS.attr('boolean',{ defaultValue: false }),
+  trade:DS.attr('boolean',{ defaultValue: false }),
+  apparel:DS.attr('boolean',{ defaultValue: false }),
+  price:DS.attr('dollars'),
   name:DS.attr(),
   lineitems:DS.hasMany('line-item'),
   tags:DS.hasMany('item-tag'),
   vendor_id:DS.belongsTo('vendor'),
   brand:DS.belongsTo('brand'),
-  collects:DS.hasMany('item'),
+  collects:DS.hasMany('item',{ inverse: 'includedIn' }),
   //For Trades
-  trade:DS.attr('boolean'),
+
   vol_num:DS.attr(),
   Illustrators:DS.hasMany('illustrator'),
   Writers:DS.hasMany('writer'),
-  quanity:DS.attr(),
+  quanity:DS.attr('number'),
   bindingType:DS.attr(),
   //For apparel
-  apparel:DS.attr('boolean'),
+
   size:DS.attr(),
   gender:DS.attr(),
   //For Comics
-  comic:DS.attr('boolean'),
+
   issue_num:DS.attr(),
-  includedIn:DS.hasMany('item'),
+  includedIn:DS.hasMany('item', {inverse: 'collects'}),
   subscriptions:DS.hasMany('subscription_box'),
   //For Figures
-  figure:DS.attr('boolean'),
+
   figureType:DS.attr(),
   materialType:DS.attr(),
   //For games
-  game:DS.attr('boolean'),
+
   gameType:DS.attr(),
+  typeName:Ember.computed('comic','trade','game','apparel','figure', function(){
+
+    if(this.get('trade')){
+      return "trade";
+    }
+    if(this.get('comic')){
+      return "comic";
+    }
+    if(this.get('game')){
+      return "game";
+    }
+    if(this.get('apparel')){
+      return "apparel";
+    }
+    if(this.get('figure')){
+      return "figure";
+    }
+    return null;
+  })
 
 });

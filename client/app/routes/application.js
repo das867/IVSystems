@@ -11,13 +11,15 @@ export default Ember.Route.extend(ApplicationRouteMixin,{
         console.log(this.get('session.currentUser.isAdmin'));
         if(this.get('session.isAuthenticated')){
           if(this.get('session.currentUser.isAdmin')){
-            $('#sidebar-wrapper').toggleClass('hidden');
             return true;
           }
         }
         transition.abort();
         $('#login-error').modal('toggle');
       }
+    },
+    toggleSideBar(){
+      $('#sidebar-wrapper').toggleClass('shown');
     }
   }
 });

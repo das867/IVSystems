@@ -1,0 +1,250 @@
+
+<div class="container-fluid add-inventory-form">
+  <form {{action 'addItem' on='submit'}}>
+    <div class="row add-inventory-form-header">
+      <div class="col-xs-10">
+        <label for='name'>NAME</label>
+      </div>
+      <div class="col-xs-2">
+        <label for='quantiy'>QTY</label>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-10">
+        {{input id='name' type="text" value=name placeholder='Enter Name' class='form-control'}}
+      </div>
+      <div class="col-xs-2">
+        {{input id='quanity' type="number" value=quanity class='form-control'}}
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="row add-inventory-form-header" style="border-right:0px;">
+          <div class="col-xs-8">
+            <label for='category'>Category</label>
+          </div>
+          <div class="col-xs-4">
+            <label for='price'>Price</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-8">
+            {{ember-selectize
+              content=itemTypes
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=type
+              value=typeName
+              placeholder="Select an item" }}
+          </div>
+          <div class="col-xs-4">
+            {{input id='price' type="text" value=price class='form-control'}}
+          </div>
+        </div>
+        <br>
+        {{#if book}}
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-6">
+            <label for='writer'>Writer</label>
+          </div>
+          <div class="col-xs-6">
+            <label for='illustrator'>Illustrator</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=writers
+              optionValuePath="content.id"
+              optionLabelPath="content.full_name"
+              multiple=true
+              selection=writersOptions
+
+              placeholder="Select an item" }}
+          </div>
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=illustrators
+              optionValuePath="content.id"
+              optionLabelPath="content.full_name"
+              multiple=true
+              selection=illustratorOptions
+
+              placeholder="Select an item" }}
+          </div>
+        </div>
+        <br>
+        <div class="row add-inventory-form-header">
+          {{#if comic}}
+          <div class="col-xs-4">
+            <label for='issue_num'>Issue Number</label>
+          </div>
+          {{/if}}
+          {{#if trade}}
+          <div class="col-xs-4">
+            <label for='vol_num'>Volume Number</label>
+          </div>
+          <div class="col-xs-4">
+            <label for='bindingType'>Binding Type</label>
+          </div>
+          {{/if}}
+        </div>
+        <br>
+        <div class="row">
+          {{#if comic}}
+          <div class="col-xs-4">
+            {{input id='issue_num' type="text" value=issue_num class='form-control'}}
+          </div>
+          {{/if}}
+          {{#if trade}}
+          <div class="col-xs-4">
+            {{input id='vol_num' type="text" value=vol_num class='form-control'}}
+          </div>
+          <div class="col-xs-4">
+            {{ember-selectize
+              content=bindingChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=bindingChoice
+              value=bindingType
+              placeholder="Select an item" }}
+          </div>
+          {{/if}}
+        </div>
+        <br>
+        {{/if}}
+
+        {{#if apparel}}
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-6">
+            <label for='size'>Size</label>
+          </div>
+          <div class="col-xs-6">
+            <label for='gender'>Gender</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=sizeChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=sizeChoice
+              value=size
+              placeholder="Select an item" }}
+          </div>
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=genderTypes
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=genderChoice
+              value=gender
+              placeholder="Select an item" }}
+          </div>
+        </div>
+        <br>
+        {{/if}}
+
+        {{#if figure}}
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-6">
+            <label for='figureType'>Figure Type</label>
+          </div>
+          <div class="col-xs-6">
+            <label for='materialType'>Material Type</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=figureChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=figureChoice
+              value=figureType
+              placeholder="Select an item" }}
+          </div>
+          <div class="col-xs-6">
+            {{ember-selectize
+              content=materialChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=materialChoice
+              value=materialType
+              placeholder="Select an item" }}
+          </div>
+        </div>
+        <br>
+        {{/if}}
+        {{#if game}}
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-12">
+            <label for='gameType'>Game Type</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-12">
+            {{ember-selectize
+              content=gameChoices
+              optionValuePath="content.name"
+              optionLabelPath="content.name"
+              selection=gameChoice
+              value=gameType
+              placeholder="Select an item" }}
+          </div>
+        </div>
+        <br>
+        {{/if}}
+      </div>
+      <div class="col-xs-6">
+        <div class="row add-inventory-form-header" style="border-left:0px;">
+          <div class="col-xs-12">
+            <label for='tags'>Add Tags</label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-12">
+            {{ember-selectize
+              content=tagChoices
+              optionValuePath="content.id"
+              optionLabelPath="content.name"
+              multiple=true
+              selection=tagOptions
+              value=tags
+              placeholder="Select an item" }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="row">
+          <div class="col-xs-6">
+            <label for='tags'>Cost</label>
+          </div>
+          <div class="col-xs-6">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+          </div>
+          <div class="col-xs-6">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <button type='submit' class='btn btn-primary'>Add Item</button>
+      </div>
+    </div>
+    <br>
+  </form>
+</div>
