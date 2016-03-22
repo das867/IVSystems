@@ -18,7 +18,7 @@ export default DS.Model.extend({
   vol_num:DS.attr(),
   Illustrators:DS.hasMany('illustrator'),
   Writers:DS.hasMany('writer'),
-  quanity:DS.attr(),
+  quanity:DS.attr('number'),
   bindingType:DS.attr(),
   //For apparel
 

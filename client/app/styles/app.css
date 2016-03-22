@@ -187,9 +187,6 @@ body {
         position: relative;
         margin-right: 0;
     }
-    .login{
-      margin-left: -250px;
-    }
 }
 
 .navbar-toggle {

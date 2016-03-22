@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   queryParams: ['id'],
   id: null,
   newItemAdded:false,
+  quanity:null,
   writerChoices:Ember.computed(function(){
     var writers=this.store.findAll('writer');
     return writers;
@@ -54,6 +55,8 @@ export default Ember.Controller.extend({
     },
     addItem(){
       var _this=this;
+      console.log(this.get('quanity'));
+      this.set('item.quanity',this.get('item.quanity')+this.get('quanity'));
       console.log(this.get('item.price'));
       this.get('item').save().then(function(){
         _this.send('changeScreen');
