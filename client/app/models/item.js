@@ -8,7 +8,7 @@ export default DS.Model.extend({
   apparel:DS.attr('boolean',{ defaultValue: false }),
   price:DS.attr('dollars'),
   name:DS.attr(),
-  lineitems:DS.hasMany('line-item'),
+  lineitems:DS.hasMany('line'),
   tags:DS.hasMany('item-tag'),
   vendor_id:DS.belongsTo('vendor'),
   brand:DS.belongsTo('brand'),
@@ -18,12 +18,13 @@ export default DS.Model.extend({
   vol_num:DS.attr(),
   Illustrators:DS.hasMany('illustrator'),
   Writers:DS.hasMany('writer'),
-  quanity:DS.attr('number'),
+  quanity:DS.attr('number',{defaultValue:0}),
   bindingType:DS.attr(),
   //For apparel
 
   size:DS.attr(),
   gender:DS.attr(),
+  apparelType:DS.attr(),
   //For Comics
 
   issue_num:DS.attr(),

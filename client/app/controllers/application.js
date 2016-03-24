@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
+  managerToggled:false,
   actions: {
     invalidateSession() {
       this.get('session').invalidate().then(function(){
@@ -12,5 +13,11 @@ export default Ember.Controller.extend({
         method: 'GET',
       });
     },
+    toggleManagerBar(){
+      this.set('managerToggled',true);
+    },
+    toggleMainBar(){
+      this.set('managerToggled',false);
+    }
   }
 });

@@ -6,19 +6,33 @@ export default Ember.Route.extend({
        refreshModel: true
     }
   },
+  beforeModel(){
+    this.set('item',null);
+    this.set('id', null);
+    this.set('newItemAdded',false);
+  },
   model(params){
       return this.store.query('item',params);
   },
   resetController(controller, isExiting, transition) {
     if (isExiting) {
       this.set('item',null);
-      // isExiting would be false if only the route's model was changing
       this.set('id', null);
+      this.set('newItemAdded',false);
     }
   },
   actions:{
-    changeScreen(){
-      this.transitionTo('general.view_inventory');
+    willTransition(transition) {
+      this.set('item',null);
+      this.set('id', null);
+      this.set('newItemAdded',false);
+      return true;
+    },
+    clearValue(){
+      alert("hello");
+      this.set('newItemAdded',false);
+      this.set('item',null);
+      this.set('id', null);
     }
   }
 });

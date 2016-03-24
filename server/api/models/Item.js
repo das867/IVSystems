@@ -22,7 +22,7 @@ module.exports = {
       //required:true
     },
     lineitems:{
-      collection:'LineItem',
+      collection:'line',
       via:'item_id'
     },
     tags:{
@@ -69,12 +69,16 @@ module.exports = {
     },
     size:{
       type:'string',
-      //required:true
+      enum:['XS','S','M','L','XL','XXL'],
     },
     gender:{
       type:'string',
       enum:['male','female','unisex'],
       //required:true
+    },
+    apparelType:{
+      type:'string',
+      enum:['shirt','hat','pant','dress']
     },
     //For Comics
     comic:{

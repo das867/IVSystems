@@ -1,6 +1,5 @@
 
-<div class="container-fluid add-inventory-form">
-  <form {{action 'addItem' on='submit'}}>
+<form {{action 'addItem' on='submit'}}>
     <div class="row add-inventory-form-header">
       <div class="col-xs-10">
         <label for='name'>NAME</label>
@@ -232,6 +231,7 @@
             <label for='tags'>Cost</label>
           </div>
           <div class="col-xs-6">
+            {{total}}
           </div>
         </div>
         <div class="row">
@@ -246,5 +246,4 @@
       </div>
     </div>
     <br>
-  </form>
-</div>
+    </form>

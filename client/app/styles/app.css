@@ -156,6 +156,9 @@ body {
 }
 
 @media(min-width:768px) {
+    .login {
+      margin-left: -250px;
+     }
 
     #wrapper {
         padding-left: 250px;

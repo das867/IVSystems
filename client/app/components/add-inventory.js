@@ -15,25 +15,27 @@ export default Ember.Component.extend({
   materialChoice:null,
   bindingChoices:[{name:'hardback'},{name:'paperback'}],
   bindingChoice:null,
+  total:0,
+  quanity:0,
+  totalObserver:Ember.observer('quanity','price',function(){
+    var quanity = this.get('quanity');
+    var price = this.get('price');
+    this.set('total',quanity*price);
+  }),
   writersOptions:[],
   illustratorOptions:[],
   tagOptions:[],
   bindingOberserver:Ember.observer('bindingType','bindingChoice',function(){
-
     if(this.bindingChoice!=null){
       this.set('bindingType',this.bindingChoice.name);
     }
   }),
   materialObserver:Ember.observer('materialType','materialChoice',function(){
-
-
     if(this.materialChoice!=null){
       this.set('materialType',this.materialChoice.name);
     }
   }),
   gameObserver:Ember.observer('gameType','gameChoice',function(){
-
-
     if(this.gameChoice!=null){
       this.set('gameType',this.gameChoice.name);
     }
@@ -96,9 +98,14 @@ export default Ember.Component.extend({
     alertToNoItem(){
       this.sendAction('alertToNoItem');
     },
-    addItem(value){
-      console.log(value);
-      this.sendAction('addItem');
+    addItem(){
+      var values = {
+        total:this.get('total'),
+        quanity:this.get('quanity')
+    }
+    this.set('total',0);
+    this.set('quanity',null);
+      this.sendAction('addItem',values);
     },
     createNewItem(){
       this.sendAction('createNewItem');

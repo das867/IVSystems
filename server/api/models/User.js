@@ -24,6 +24,14 @@ module.exports = {
       type:'boolean',
       defaultsTo:false,
     },
+    orders:{
+      collection:'Order',
+      via:'user_id'
+    },
+    lineItems:{
+      collection:'line',
+      via:'user_id'
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.attempts;

@@ -23,10 +23,24 @@ module.exports = {
     },
     type:{
       type:'string',
-      enum:['reorder','reciept','removal','add','return']
+      enum:['reorder','reciept','return_receipt','return']
+    },
+    original_receipt:{
+      model:'Order',
+      unique:true
+    },
+    return_receipt:{
+      collection:'Order',
+      via:'original_receipt'
+    },
+    user_id:{
+      model:'user'
+    },
+    reason:{
+      type:'string'
     },
     lineitems:{
-      collection:'LineItem',
+      collection:'line',
       via:'order_id'
     }
   }

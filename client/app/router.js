@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('add_inventory');
     this.route('view_inventory');
     this.route('subscriptions');
+    this.route('search');
   });
 });
 

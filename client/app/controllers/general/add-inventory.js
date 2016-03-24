@@ -1,10 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  session: Ember.inject.service('session'),
   queryParams: ['id'],
   id: null,
   newItemAdded:false,
+  total:null,
   quanity:null,
+
   writerChoices:Ember.computed(function(){
     var writers=this.store.findAll('writer');
     return writers;
@@ -35,13 +38,11 @@ export default Ember.Controller.extend({
     } else {
       this.set('book',false);
     }
-    console.log(item);
   }),
   actions:{
     alertToNoItem(){
       console.log(this.id);
       var item = this.get('item');
-      console.log(item);
       if(item===null){
         $('.no-item-found').removeClass('hidden');
       } else {
@@ -53,18 +54,24 @@ export default Ember.Controller.extend({
       $('.no-item-found').addClass('hidden');
 
     },
-    addItem(){
+    addItem(values){
       var _this=this;
-      console.log(this.get('quanity'));
-      this.set('item.quanity',this.get('item.quanity')+this.get('quanity'));
-      console.log(this.get('item.price'));
+      var quanity = values.quanity*1;
+      var total = values.total*1;
+      this.store.createRecord('line',{
+        add:'true',
+        item_id:this.get('item'),
+        quanity:quanity,
+        subTotal:total,
+        user_id:this.get('session.currentUser'),
+      }).save();
+      var itemQuanity = this.get('item.quanity') *1;
+      this.set('item.quanity',itemQuanity+quanity);
       this.get('item').save().then(function(){
-        _this.send('changeScreen');
+        _this.send('clearValue');
       });
-
     },
     createNewItem(){
-      console.log(this.comic);
       var newItem = this.store.createRecord('item',{
         id:this.id,
       });
