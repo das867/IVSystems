@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
   quanity:null,
   issue_num:null,
   size:null,
+  type:null,
   writerChoices:Ember.computed(function(){
     var writers=this.store.findAll('writer');
     return writers;
@@ -85,16 +86,26 @@ export default Ember.Controller.extend({
         detail.set('quanity',currentQuanity+quanity);
         detail.save();
         console.log(detail);
+      } else {
+        detail = this.get('item').get('Details').get('firstObject');
+        currentQuanity = detail.get('quanity')*1;
+        detail.set('quanity',currentQuanity+quanity);
+        detail.save();
       }
       this.get('item').save().then(function(){
         _this.send('clearValue');
+      },function(reason){
+        console.log(reason);
       });
+    },
+    setType(value){
+      this.set('type',value);
     },
     createNewItem(){
       var newItem = this.store.createRecord('item',{
         id:this.id,
       });
-      
+      newItem.set(this.get('type'),true);
       this.set('item',newItem);
       newItem.save();
       $('.no-item-found').addClass('hidden');

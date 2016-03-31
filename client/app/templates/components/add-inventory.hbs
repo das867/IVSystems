@@ -144,12 +144,9 @@
         <div class="row">
           <div class="col-xs-6">
             <select class="form-control" onchange={{action 'setSize' value='target.value'}}>
-              <option value="XS">XS</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
+              {{#each details as |detail|}}
+                <option value={{detail.id}}>{{detail.size}}</option>
+              {{/each}}
             </select>
           </div>
           <div class="col-xs-6">

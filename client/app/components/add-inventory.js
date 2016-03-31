@@ -110,7 +110,7 @@ export default Ember.Component.extend({
       }
     },
     setSize(value){
-      this.set('size',value);
+      this.set('detail_id',value);
       this.sendAction('checkForDetail');
     },
     addItem(){

@@ -10,6 +10,7 @@ export default Ember.Route.extend({
     this.set('item',null);
     this.set('id', null);
     this.set('newItemAdded',false);
+    this.set('type',null);
   },
   model(params){
       return this.store.query('item',params);
@@ -19,6 +20,7 @@ export default Ember.Route.extend({
       this.set('item',null);
       this.set('id', null);
       this.set('newItemAdded',false);
+      this.set('type',null);
     }
   },
   actions:{
@@ -26,6 +28,7 @@ export default Ember.Route.extend({
       this.set('item',null);
       this.set('id', null);
       this.set('newItemAdded',false);
+      this.set('type',null);
       return true;
     },
     clearValue(){
@@ -33,6 +36,7 @@ export default Ember.Route.extend({
       this.set('newItemAdded',false);
       this.set('item',null);
       this.set('id', null);
+      this.set('type',null);
     }
   }
 });

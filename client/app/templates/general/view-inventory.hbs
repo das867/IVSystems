@@ -9,7 +9,6 @@
           <tr>
             <th>Item Name</th>
             <th>PRICE</th>
-            <th>QTY</th>
             <th>CATEGORY</th>
             <th>Other</th>
           </tr>
@@ -19,16 +18,19 @@
             <tr>
               <td>{{item.name}}</td>
               <td>{{item.sales_price}}</td>
-              <td>{{item.quanity}}</td>
               <td>{{item.typeName}}</td>
               <td>
-                {{#if item.issue_num}}
-                  Issue Num: {{item.issue_num}}
-                {{/if}}
-                {{#if item.size}}
-                  Size: {{item.size}}
+                {{#each item.Details as |detail|}}
+                Quanity: {{detail.quanity}}
+                {{#if detail.issue_num}}
+                  Issue Num: {{detail.issue_num}}
                   <br>
                 {{/if}}
+                {{#if detail.size}}
+                  Size: {{detail.size}}
+                  <br>
+                {{/if}}
+                {{/each}}
                 {{#if item.gender}}
                   Gender: {{item.gender}}
                 {{/if}}
