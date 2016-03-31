@@ -36,9 +36,6 @@ export default DS.Model.extend({
   figureType:DS.attr(),
   materialType:DS.attr(),
   //For games
-  full_issue_name:Ember.computed('name','issue_num',function(){
-    return `#${this.get('issue_num')} ${this.get('name')}`;
-  }),
   gameType:DS.attr(),
   typeName:Ember.computed('comic','trade','game','apparel','figure', function(){
 

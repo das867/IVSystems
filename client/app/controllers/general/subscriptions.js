@@ -25,18 +25,14 @@ export default Ember.Controller.extend({
       }).save();
       $('#newMemberModal').modal('toggle');
     },
-    createNewBox(value){
-      console.log(value);
-      var member = this.store.peekRecord('member',value);
-      console.log(member);
-      var box = this.store.createRecord('box',{
-        subscriber:member,
-      }).save();
-      console.log(box);
-    },
     addItemToBox(value){
       var box = this.store.peekRecord('box',value);
       box.get('Items').pushObject(this.get('comic'));
+      box.save();
+    },
+    removeItemToBox(value){
+      var box = this.store.peekRecord('box',this.get('model').get('box.id'));
+      box.get('Items').popObject(value);
       box.save();
     }
   }

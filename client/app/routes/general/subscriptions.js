@@ -10,6 +10,9 @@ export default Ember.Route.extend({
   },
   model(params){
     if(params.first_name!=null)
-      return this.store.queryRecord('member',params);
+      return this.store.queryRecord('member',params).catch(function(reason){
+        console.log(reason);
+        $('#newMemberModal').modal('toggle');
+      });
   }
 });
