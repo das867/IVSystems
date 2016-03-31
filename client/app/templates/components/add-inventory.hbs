@@ -21,16 +21,19 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="row add-inventory-form-header" style="border-right:0px;">
-          <div class="col-xs-8">
+          <div class="col-xs-5">
             <label for='category'>Category</label>
           </div>
-          <div class="col-xs-4">
+          <div class="col-xs-3">
             <label for='price'>Price</label>
+          </div>
+          <div class="col-xs-4">
+            <label for='sales_price'>Sales Price</label>
           </div>
         </div>
         <br>
         <div class="row">
-          <div class="col-xs-8">
+          <div class="col-xs-5">
             {{ember-selectize
               content=itemTypes
               optionValuePath="content.name"
@@ -39,8 +42,11 @@
               value=typeName
               placeholder="Select an item" }}
           </div>
-          <div class="col-xs-4">
+          <div class="col-xs-3">
             {{input id='price' type="text" value=price class='form-control'}}
+          </div>
+          <div class="col-xs-4">
+            {{input id='sales_price' type="text" value=sales_price class='form-control'}}
           </div>
         </div>
         <br>
@@ -96,7 +102,16 @@
         <div class="row">
           {{#if comic}}
           <div class="col-xs-4">
+            <select class="form-control" onchange={{action 'setIssueNum' value='target.value'}}>
+              <option value="" disabled selected>Issue #</option>
+              {{#each details as |detail|}}
+                <option value={{detail.id}}>{{detail.issue_num}}</option>
+              {{/each}}
+              <option value="other">new</option>
+            </select>
+            {{#if newComic}}
             {{input id='issue_num' type="text" value=issue_num class='form-control'}}
+            {{/if}}
           </div>
           {{/if}}
           {{#if trade}}
@@ -116,7 +131,6 @@
         </div>
         <br>
         {{/if}}
-
         {{#if apparel}}
         <div class="row add-inventory-form-header">
           <div class="col-xs-6">
@@ -129,13 +143,14 @@
         <br>
         <div class="row">
           <div class="col-xs-6">
-            {{ember-selectize
-              content=sizeChoices
-              optionValuePath="content.name"
-              optionLabelPath="content.name"
-              selection=sizeChoice
-              value=size
-              placeholder="Select an item" }}
+            <select class="form-control" onchange={{action 'setSize' value='target.value'}}>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
           </div>
           <div class="col-xs-6">
             {{ember-selectize

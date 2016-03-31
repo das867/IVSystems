@@ -25,5 +25,6 @@ export default Ember.Component.extend({
     },
     clearSearch(){
       this.sendAction('clearSearch');
+    },
   },
 });

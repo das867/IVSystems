@@ -5,8 +5,6 @@ export default Ember.Component.extend({
   type:null,
   genderTypes:[{name:'male'},{name:'female'},{name:'unisex'}],
   genderChoice:null,
-  sizeChoices:[{name:'XS'},{name:'S'},{name:'M'},{name:'L'},{name:'XL'},{name:'XXL'}],
-  sizeChoice:null,
   figureChoices:[{name:'game'},{name:'figure'},{name:'collectable'},{name:'action'}],
   figureChoice:null,
   gameChoices:[{name:'card'},{name:'dice'},{name:'board'},{name:'role playing'}],
@@ -17,6 +15,10 @@ export default Ember.Component.extend({
   bindingChoice:null,
   total:0,
   quanity:0,
+  issue_num:null,
+  size:null,
+  detail_id:null,
+  newComic:false,
   totalObserver:Ember.observer('quanity','price',function(){
     var quanity = this.get('quanity');
     var price = this.get('price');
@@ -98,10 +100,27 @@ export default Ember.Component.extend({
     alertToNoItem(){
       this.sendAction('alertToNoItem');
     },
+    setIssueNum(value){
+      if(value==='other'){
+        console.log(value);
+        this.set('newComic',true);
+      }else{
+        console.log(value);
+        this.set('detail_id',value);
+      }
+    },
+    setSize(value){
+      this.set('size',value);
+      this.sendAction('checkForDetail');
+    },
     addItem(){
       var values = {
         total:this.get('total'),
-        quanity:this.get('quanity')
+        quanity:this.get('quanity'),
+        issue_num:this.get('issue_num'),
+        size:this.get('size'),
+        newComic:this.get('newComic'),
+        detail_id:this.get('detail_id'),
     }
     this.set('total',0);
     this.set('quanity',null);

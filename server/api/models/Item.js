@@ -13,6 +13,13 @@ module.exports = {
       primaryKey:true,
       required:true,
     },
+    Details:{
+      collection:'detail',
+      via:'item_id'
+    },
+    sales_price:{
+      type:'string',
+    },
     price:{
       type:'string',
       //required:true
@@ -54,10 +61,6 @@ module.exports = {
       via:'Items',
       //through:'tradewriter'
     },
-    quanity:{
-      type:'integer',
-      //required:true
-    },
     bindingType:{
       type:'string',
       enum:['hardback','paperback']
@@ -66,10 +69,6 @@ module.exports = {
     apparel:{
       type:'boolean',
       defaultsTo:false
-    },
-    size:{
-      type:'string',
-      enum:['XS','S','M','L','XL','XXL'],
     },
     gender:{
       type:'string',
@@ -85,10 +84,6 @@ module.exports = {
       type:'boolean',
       defaultsTo:false
     },
-    issue_num:{
-      type:'integer',
-      //required:true
-    },
     collects:{
       collection:'Item',
       via:'includedIn',
@@ -101,7 +96,7 @@ module.exports = {
       //through:'collectedcomic'
     },
     subscriptions:{
-      collection:'Subscription_Box',
+      collection:'box',
       via:'Items',
       //through:'subscriber_box_comic'
     },
@@ -128,5 +123,26 @@ module.exports = {
       enum:['board','card','dice','role playing'],
       //required:true
     },
+  },
+  afterCreate:function(options,cb){
+    console.log(options.id);
+    Item.findOne(options.id).populate('Details').exec(function(err,item){
+      console.log(item.Details);
+      console.log(item.apparel);
+      if(item.apparel){
+        item.Details.add({item_id:item.id,quanity:0,size:'XS'});
+        item.Details.add({item_id:item.id,quanity:0,size:'S'});
+        item.Details.add({item_id:item.id,quanity:0,size:'M'});
+        item.Details.add({item_id:item.id,quanity:0,size:'L'});
+        item.Details.add({item_id:item.id,quanity:0,size:'XL'});
+        item.Details.add({item_id:item.id,quanity:0,size:'XXL'});
+      }else if(!item.comic){
+        item.Details.add({item_id:item.id,quanity:0});
+      }
+      item.save(function(err,res){
+        console.log(res);
+        cb();
+      });
+    });
   }
 };

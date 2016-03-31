@@ -7,7 +7,8 @@ export default Ember.Controller.extend({
   newItemAdded:false,
   total:null,
   quanity:null,
-
+  issue_num:null,
+  size:null,
   writerChoices:Ember.computed(function(){
     var writers=this.store.findAll('writer');
     return writers;
@@ -52,12 +53,17 @@ export default Ember.Controller.extend({
     cancelSearch(){
       this.set('id',null);
       $('.no-item-found').addClass('hidden');
-
+    },
+    checkForDetail(){
     },
     addItem(values){
       var _this=this;
+      var issue_num=values.issue_num;
+      var size=values.size;
       var quanity = values.quanity*1;
       var total = values.total*1;
+      var detail;
+      var currentQuanity;
       this.store.createRecord('line',{
         add:'true',
         item_id:this.get('item'),
@@ -65,8 +71,21 @@ export default Ember.Controller.extend({
         subTotal:total,
         user_id:this.get('session.currentUser'),
       }).save();
-      var itemQuanity = this.get('item.quanity') *1;
-      this.set('item.quanity',itemQuanity+quanity);
+      if(values.newComic){
+        this.store.createRecord('detail',{
+          item_id:this.get('item'),
+          issue_num:issue_num,
+          size:size,
+          quanity:quanity
+        }).save();
+      } else if (values.detail_id) {
+        console.log("hello");
+        detail = this.store.peekRecord('detail',values.detail_id);
+        currentQuanity = detail.get('quanity')*1;
+        detail.set('quanity',currentQuanity+quanity);
+        detail.save();
+        console.log(detail);
+      }
       this.get('item').save().then(function(){
         _this.send('clearValue');
       });
@@ -75,7 +94,9 @@ export default Ember.Controller.extend({
       var newItem = this.store.createRecord('item',{
         id:this.id,
       });
+      
       this.set('item',newItem);
+      newItem.save();
       $('.no-item-found').addClass('hidden');
     }
   }

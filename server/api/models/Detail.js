@@ -1,5 +1,5 @@
 /**
- * Member.js
+ * Details.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -13,23 +13,20 @@ module.exports = {
       autoIncrement:true,
       primaryKey:true
     },
-    first_name:{
+    item_id:{
+      model:'Item'
+    },
+    quanity:{
+      type:'integer',
+      //required:true
+    },
+    issue_num:{
+      type:'integer',
+      //required:true
+    },
+    size:{
       type:'string',
-      required:true
+      enum:['XS','S','M','L','XL','XXL'],
     },
-    last_name:{
-      type:'string',
-      required:true
-    },
-    email:{
-      type:'string',
-    },
-    phone:{
-      type:'string'
-    },
-    box:{
-      collection:'box',
-      via:'subscriber'
-    }
   }
 };
