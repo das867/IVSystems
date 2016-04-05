@@ -1,4 +1,3 @@
-
 <form {{action 'addItem' on='submit'}}>
     <div class="row add-inventory-form-header">
       <div class="col-xs-10">
@@ -34,13 +33,7 @@
         <br>
         <div class="row">
           <div class="col-xs-5">
-            {{ember-selectize
-              content=itemTypes
-              optionValuePath="content.name"
-              optionLabelPath="content.name"
-              selection=type
-              value=typeName
-              placeholder="Select an item" }}
+            <p>{{typeName}}</p>
           </div>
           <div class="col-xs-3">
             {{input id='price' type="text" value=price class='form-control'}}
@@ -61,25 +54,22 @@
         </div>
         <br>
         <div class="row">
-          <div class="col-xs-6">
-            {{ember-selectize
-              content=writers
-              optionValuePath="content.id"
-              optionLabelPath="content.full_name"
-              multiple=true
-              selection=writersOptions
-
-              placeholder="Select an item" }}
+          <div class="col-xs-6 form-group">
+            <select class="form-control" onchange={{action 'setWriters'}} multiple>
+              {{#each writers as |writer|}}
+                <option value={{writer.id}}>{{writer.full_name}}</option>
+              {{/each}}
+              <option value="other">new</option>
+            </select>
           </div>
-          <div class="col-xs-6">
-            {{ember-selectize
-              content=illustrators
-              optionValuePath="content.id"
-              optionLabelPath="content.full_name"
-              multiple=true
-              selection=illustratorOptions
+          <div class="col-xs-6 form-group">
+            <select class="form-control" onchange={{action 'setIllustrators'}} multiple>
+              {{#each illustrators as |illustrator|}}
+                <option value={{illustrator.id}}>{{illustrator.full_name}}</option>
+              {{/each}}
+              <option value="other" >new</option>
+            </select>
 
-              placeholder="Select an item" }}
           </div>
         </div>
         <br>
@@ -223,14 +213,13 @@
         </div>
         <br>
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-12 form-group">
             {{ember-selectize
               content=tagChoices
               optionValuePath="content.id"
               optionLabelPath="content.name"
               multiple=true
               selection=tagOptions
-              value=tags
               placeholder="Select an item" }}
           </div>
         </div>
@@ -238,18 +227,43 @@
     </div>
     <div class="row">
       <div class="col-xs-6">
-        <div class="row">
-          <div class="col-xs-6">
-            <label for='tags'>Cost</label>
+        <div class="row add-inventory-form-header">
+          <div class="col-xs-4">
+            <label>Cost</label>
           </div>
-          <div class="col-xs-6">
-            {{total}}
+          <div class="col-xs-4">
+            <label>Vendor</label>
+          </div>
+          <div class="col-xs-4">
+            <label>Brand</label>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-6">
+          <div class="col-xs-4">
+            {{total}}
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-4">
+            {{#if newVendor}}
+              <select class="form-control" onchange={{action 'setVendor' value='target.value'}}>
+                {{#each vendors as |vendor|}}
+                  <option value={{vendor.id}}>{{vendor.name}}</option>
+                {{/each}}
+              </select>
+            {{else}}
+              {{vendor.name}}
+            {{/if}}
+
+          </div>
+          <div class="col-xs-4">
+            {{#if newBrand}}
+            <select class="form-control" onchange={{action 'setBrand' value='target.value'}}>
+              {{#each brands as |brand|}}
+                <option value={{brand.id}}>{{brand.name}}</option>
+              {{/each}}
+            </select>
+            {{else}}
+              {{brand.name}}
+            {{/if}}
           </div>
         </div>
       </div>

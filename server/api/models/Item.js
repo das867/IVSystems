@@ -33,7 +33,7 @@ module.exports = {
       via:'item_id'
     },
     tags:{
-      collection:'itemTag',
+      collection:'tag',
       via:'Items',
       //through:'tagged_trade'
     },

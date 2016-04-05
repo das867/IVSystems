@@ -19,6 +19,31 @@ export default Ember.Component.extend({
   size:null,
   detail_id:null,
   newComic:false,
+  fwriter:null,
+  lwriter:null,
+  fillustrat:null,
+  lillustrat:null,
+  newWriter:false,
+  newIllustrator:false,
+  newVendor:Ember.computed('vendor',function(){
+    if(this.get('vendor')){
+      if(this.get('vendor').content!=null){
+        return false;
+      }else {
+        return true;
+      }
+    }
+
+  }),
+  newBrand:Ember.computed('brand',function(){
+    if(this.get('brand')){
+      if(this.get('brand').content!=null){
+        return false;
+      }else {
+        return true;
+      }
+    }
+  }),
   totalObserver:Ember.observer('quanity','price',function(){
     var quanity = this.get('quanity');
     var price = this.get('price');
@@ -97,6 +122,17 @@ export default Ember.Component.extend({
     }
   }),
   actions:{
+    setVendor(value){
+      this.set('vendor',value);
+    },
+    setBrand(value){
+      this.set('brand',value);
+    },
+    setTags(event){
+      const tag = Ember.$(event.target).val();
+      console.log(tag);
+      this.set('tagOptions',tag||[]);
+    },
     alertToNoItem(){
       this.sendAction('alertToNoItem');
     },
@@ -113,6 +149,22 @@ export default Ember.Component.extend({
       this.set('detail_id',value);
       this.sendAction('checkForDetail');
     },
+    setWriters(event){
+      const writer = Ember.$(event.target).val();
+
+      if(writer.get('firstObject') === "other"){
+        this.sendAction('newWriter');
+      } else
+      this.set('writersOptions',writer||[]);
+    },
+    setIllustrators(event){
+      const illustrator = Ember.$(event.target).val();
+      console.log(illustrator);
+      if(illustrator.get('firstObject')==="other"){
+        this.sendAction('newIllustrator');
+      } else
+      this.set('illustratorOptions',illustrator||[]);
+    },
     addItem(){
       var values = {
         total:this.get('total'),
@@ -121,7 +173,10 @@ export default Ember.Component.extend({
         size:this.get('size'),
         newComic:this.get('newComic'),
         detail_id:this.get('detail_id'),
-    }
+        writers:this.get('writersOptions'),
+        illustrators:this.get('illustratorOptions'),
+        tags:this.get('tagOptions'),
+      };
     this.set('total',0);
     this.set('quanity',null);
       this.sendAction('addItem',values);

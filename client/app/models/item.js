@@ -11,7 +11,7 @@ export default DS.Model.extend({
   name:DS.attr(),
   sales_price:DS.attr(),
   lineitems:DS.hasMany('line'),
-  tags:DS.hasMany('item-tag'),
+  tags:DS.hasMany('tag'),
   vendor_id:DS.belongsTo('vendor'),
   brand:DS.belongsTo('brand'),
   collects:DS.hasMany('item',{ inverse: 'includedIn' }),

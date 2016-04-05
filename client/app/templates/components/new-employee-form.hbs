@@ -1,0 +1,42 @@
+<div id="new-employee" class="modal fade" tabindex="-1" role="dialog">
+
+  <div class="modal-dialog">
+    <div class="modal-content" >
+      <div class="modal-header" style="background-color:	#677578; color:white;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add a New Member</h4>
+      </div>
+      <form {{action 'createEmployee' on='submit'}}>
+        <div class="modal-body" style="background-color: #15b9d6; color:white;">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            {{input type="text" value=first_name class="form-control" }}
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            {{input type="text" value=last_name class="form-control" }}
+          </div>
+          <div class="form-group">
+            <label for="lastName">Username</label>
+            {{input type="text" value=username class="form-control" }}
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            {{input type="password" value=password class="form-control" }}
+          </div>
+          <div class="form-group">
+            <label for="password">Confirm Password</label>
+            {{input type="password" value=c_password class="form-control" }}
+          </div>
+          <div class="form-group">
+            <label>{{input type="checkbox" checked=isAdmin}} Manager Role</label>
+          </div>
+      </div>
+      <div class="modal-footer" style="background-color:	#677578; color:white;">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default">Add Member</button>
+      </div>
+    </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

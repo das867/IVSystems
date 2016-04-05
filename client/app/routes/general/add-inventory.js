@@ -11,6 +11,11 @@ export default Ember.Route.extend({
     this.set('id', null);
     this.set('newItemAdded',false);
     this.set('type',null);
+    this.set('total',null);
+    this.set('quanity',null);
+    this.set('issue_num',null);
+    this.set('type'null);
+    this.set('size',null);
   },
   model(params){
       return this.store.query('item',params);
@@ -21,6 +26,11 @@ export default Ember.Route.extend({
       this.set('id', null);
       this.set('newItemAdded',false);
       this.set('type',null);
+      this.set('total',null);
+      this.set('quanity',null);
+      this.set('issue_num',null);
+      this.set('type'null);
+      this.set('size',null);
     }
   },
   actions:{
@@ -29,14 +39,24 @@ export default Ember.Route.extend({
       this.set('id', null);
       this.set('newItemAdded',false);
       this.set('type',null);
+      this.set('total',null);
+      this.set('quanity',null);
+      this.set('issue_num',null);
+      this.set('type'null);
+      this.set('size',null);
       return true;
     },
     clearValue(){
       alert("hello");
-      this.set('newItemAdded',false);
       this.set('item',null);
       this.set('id', null);
+      this.set('newItemAdded',false);
       this.set('type',null);
+      this.set('total',null);
+      this.set('quanity',null);
+      this.set('issue_num',null);
+      this.set('type'null);
+      this.set('size',null);
     }
   }
 });

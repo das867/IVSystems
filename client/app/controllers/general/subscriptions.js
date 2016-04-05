@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
     },
     removeItemToBox(value){
       var box = this.store.peekRecord('box',this.get('model').get('box.id'));
-      box.get('Items').popObject(value);
+      box.get('Items').removeObject(value);
       box.save();
     }
   }

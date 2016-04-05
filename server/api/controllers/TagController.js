@@ -1,7 +1,7 @@
 /**
- * ItemTagController
+ * TagController
  *
- * @description :: Server-side logic for managing itemtags
+ * @description :: Server-side logic for managing Tags
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

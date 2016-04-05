@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
   figureType:null,
   size:null,
   tagChoices:Ember.computed(function(){
-    return this.store.findAll('item-tag');
+    return this.store.findAll('tag');
   }),
 
   filteredItems:Ember.computed('name','type','tag','model','apparelType','materialType','gameType','figureType','size',function(){
