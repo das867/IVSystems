@@ -27,9 +27,20 @@ module.exports = {
     phone:{
       type:'string'
     },
-    subscription_box:{
-      collection:'Subscription_Box',
+    box:{
+      collection:'box',
       via:'subscriber'
     }
+  },
+  afterCreate:function(options,cb){
+    console.log(options.id);
+    Member.findOne(options.id).populate('box').exec(function(err,member){
+      console.log(member);
+      member.box.add({subscriber:member.id});
+      member.save(function(err,res){
+        console.log(res);
+        cb();
+      });
+    });
   }
 };

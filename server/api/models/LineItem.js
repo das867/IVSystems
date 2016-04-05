@@ -18,16 +18,21 @@ module.exports = {
     },
     subTotal:{
       type:'float',
-      required:true
+      //required:true
     },
     quanity:{
       type:'integer',
-      required:true
+      //required:true
     },
     order_id:{
       model:'Order'
+    },
+    add:{
+      type:'boolean',
+      defaultsTo:false
+    },
+    user_id:{
+      model:'user'
     }
-
-
   }
 };

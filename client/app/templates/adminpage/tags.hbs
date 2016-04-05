@@ -1,0 +1,33 @@
+<div class="row">
+  <form {{action "createTag" on="submit"}}>
+    <div class="col-xs-11 form-group">
+      <label>Add a Tag</label>
+      {{input type="text" value=newTag focus-out="setTagName" class="form-control" required=true }}
+    </div>
+    <div class="col-xs-1">
+      <button type="submit" class="btn btn-default center-block" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    </div>
+  </form>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of Items Tagged</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |tag|}}
+          <tr>
+            <td>{{tag.name}}</td>
+            <td>{{tag.numOfItems}}</td>
+            <td><button {{action "deleteTag" tag.id }} class="btn btn-default center-block" ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

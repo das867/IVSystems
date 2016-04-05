@@ -1,12 +1,14 @@
 <nav class="navbar navbar-default navbar-fixed-top" style="margin:0;">
   <div class="container-fluid">
     <div class="navbar-header">
+      {{#if session.isAuthenticated}}
       <button type="button" class="navbar-toggle collapsed" {{action "toggleSideBar"}} aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      {{/if}}
       {{ link-to 'IVS Managment Systems' 'general.view_inventory' class="navbar-brand" }}
     </div>
 
@@ -16,9 +18,6 @@
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.currentUser.id}}<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                {{#if session.currentUser.isAdmin}}
-                <li>{{link-to 'Admin Menu' 'adminpage'}}</li>
-                {{/if}}
                 <li role="separator" class="divider"></li>
                 <li><a {{action 'invalidateSession'}}>Logout</a></li>
               </ul>
@@ -28,5 +27,27 @@
     </div>
   </div>
 </nav>
-{{outlet}}
+<div id="wrapper">
+  <div id="sidebar-wrapper" >
+  <ul class="sidebar-nav">
+
+    {{#if managerToggled}}
+    <li><a {{action "toggleMainBar"}} >Toggle Main</a></li>
+    {{manager-navbar}}
+    {{else}}
+    {{#if session.isAuthenticated}}
+      {{#if session.currentUser.isAdmin}}
+      <li><a {{action "toggleManagerBar"}} type="button">Toggle Manager</a></li>
+      {{/if}}
+    {{/if}}
+    {{main-navbar}}
+    {{/if}}
+
+  </ul>
+  </div>
+  <div id="page-content-wrapper">
+      {{outlet}}
+  </div>
+</div>
+
 {{login-error-message}}

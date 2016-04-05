@@ -7,9 +7,11 @@ export default DS.Model.extend({
   trade:DS.attr('boolean',{ defaultValue: false }),
   apparel:DS.attr('boolean',{ defaultValue: false }),
   price:DS.attr('dollars'),
+  Details:DS.hasMany('detail'),
   name:DS.attr(),
-  lineitems:DS.hasMany('line-item'),
-  tags:DS.hasMany('item-tag'),
+  sales_price:DS.attr(),
+  lineitems:DS.hasMany('line'),
+  tags:DS.hasMany('tag'),
   vendor_id:DS.belongsTo('vendor'),
   brand:DS.belongsTo('brand'),
   collects:DS.hasMany('item',{ inverse: 'includedIn' }),
@@ -18,23 +20,22 @@ export default DS.Model.extend({
   vol_num:DS.attr(),
   Illustrators:DS.hasMany('illustrator'),
   Writers:DS.hasMany('writer'),
-  quanity:DS.attr('number'),
   bindingType:DS.attr(),
   //For apparel
 
-  size:DS.attr(),
+
   gender:DS.attr(),
+  apparelType:DS.attr(),
   //For Comics
 
-  issue_num:DS.attr(),
+
   includedIn:DS.hasMany('item', {inverse: 'collects'}),
-  subscriptions:DS.hasMany('subscription_box'),
+  subscriptions:DS.hasMany('box'),
   //For Figures
 
   figureType:DS.attr(),
   materialType:DS.attr(),
   //For games
-
   gameType:DS.attr(),
   typeName:Ember.computed('comic','trade','game','apparel','figure', function(){
 

@@ -6,6 +6,9 @@
   background-repeat: no-repeat;
   border-radius: 0px;
 }
+.hiddenRow {
+    padding: 0 !important;
+}
 .navbar-default .navbar-text {
   color: white;
 }
@@ -156,6 +159,9 @@ body {
 }
 
 @media(min-width:768px) {
+    .login {
+      margin-left: -250px;
+     }
 
     #wrapper {
         padding-left: 250px;

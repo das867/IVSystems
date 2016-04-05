@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <label>Search for Name</label>
+    {{input type="search" value=name class="form-control"}}
+  </div>
+  <div class="col-xs-4 col-sm-3">
+    <label for='category'>Category</label>
+    <select class="form-control" onchange={{action 'setType' value='target.value'}}>
+      <option value=null>All</option>
+      <option value="comic">Comic</option>
+      <option value='trade'>Trade</option>
+      <option value='figure'>Figure</option>
+      <option value='game'>Game</option>
+      <option value='apparel'>Apparel</option>
+    </select>
+  </div>
+  <div class="col-xs-4 col-sm-3">
+    <label for='Tags'>Tags</label>
+    <select class="form-control" onchange={{action 'setTag' value='target.value'}}>
+      <option value=null>All</option>
+      {{#each tagChoices as |item-tag|}}
+        <option value={{item-tag.name}}>{{item-tag.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="col-xs-4 col-sm-3">
+    <label for='category'>Apparel Type</label>
+    <select class="form-control" onchange={{action 'setApparelType' value='target.value'}}>
+      <option value=null>All</option>
+      <option value="shirt">Shirt</option>
+      <option value='hat'>Hat</option>
+      <option value='pant'>Pants</option>
+      <option value='dress'>Dress</option>
+    </select>
+  </div>
+  <div class="col-xs-4 col-sm-3">
+    <label for='category'>Sizes</label>
+    <select class="form-control" onchange={{action 'setApparelSize' value='target.value'}}>
+      <option value=null>All</option>
+      <option value="xs">Extra Small</option>
+      <option value='S'>Small</option>
+      <option value='M'>Medium</option>
+      <option value='L'>Large</option>
+      <option value='XL'>Extra Large</option>
+      <option value='XXL'>Extra Extra Large</option>
+    </select>
+  </div>
+  <div class="col-xs-4 col-sm-3">
+    <label for='category'>Figure Type</label>
+    <select class="form-control" onchange={{action 'setFigureType' value='target.value'}}>
+      <option value=null>All</option>
+      <option value="game figure">Game Figure</option>
+      <option value='collectable'>Collectable</option>
+      <option value='Action'>Action Figure</option>
+    </select>
+  </div>
+  <div class="col-xs-4 col-sm-3">
+    <label for='category'>Material</label>
+    <select class="form-control" onchange={{action 'setMaterialType' value='target.value'}}>
+      <option value=null>All</option>
+      <option value="plush">Plush</option>
+      <option value='vinyl'>Vinyl</option>
+      <option value='plastic'>Plastic</option>
+      <option value='die-cast'>Die-Cast</option>
+      <option value='metal'>Metal</option>
+    </select>
+  </div>
+  <div class="col-xs-4 col-sm-3">
+    <label for='category'>Game Type</label>
+    <select class="form-control" onchange={{action 'setGameType' value='target.value'}}>
+      <option value=null>All</option>
+      <option value="board">Board Game</option>
+      <option value='card'>Card Game</option>
+      <option value='dice'>Dice</option>
+      <option value='role playing'>Role Playing Game</option>
+    </select>
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    <button {{action "clearSearch"}} class="btn btn-default btn-block">Clear Search</button>
+  </div>
+</div>

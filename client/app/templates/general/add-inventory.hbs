@@ -13,10 +13,22 @@
   </div>
 </div>
 <div class="alert alert-danger hidden no-item-found" role="alert">
-  <h4>No Item Found</h4>
+  <h4>No Item Found. To add item to inventory select a type and click "Create Item"</h4>
+  <select class="form-control" onchange={{action 'setType' value='target.value'}}>
+    <option value="" disabled selected>Type</option>
+    <option value="comic">Comic</option>
+    <option value="figure">Figure</option>
+    <option value="game">Game</option>
+    <option value="trade">Trade</option>
+    <option value="apparel">Apparel</option>
+  </select>
   <button class="btn btn-default" role="type" {{action "createNewItem"}}>Create Item</button>
   <button class="btn btn-default" role="type" {{action "cancelSearch"}}>Cancel Search</button>
 </div>
 <hr style="margin-top:10px;margin-bottom:10px">
+<div class="container-fluid add-inventory-form">
+  {{add-inventory addItem="addItem" newWriter="newWriter" newIllustrator="newIllustrator" checkForDetail="checkForDetail" brands=brandChoices vendors=vendorChoices vendor=item.vendor_id brand=item.brand sales_price=item.sales_price details=item.Details item=item alertToNoItem="alertToNoItem" findItem="setItem" book=book tagChoices=tagChoices illustrators=illustratorChoices writers=writerChoices name=item.name typeName=item.typeName gender=item.gender brand=item.brand price=item.price vol_num=item.vol_num bindingType=item.bindingType trade=item.trade apparel=item.apparel comic=item.comic includedIn=item.includedIn collects=item.collects figure=item.figure figureType=item.figureType materialType=item.materialType game=item.game gameType=item.gameType Illustrators=item.Illustrators Writers=item.Writers tags=item.tags}}
+</div>
 
-{{add-inventory item=item addItem="addItem" alertToNoItem="alertToNoItem" quanity=quanity findItem="setItem" book=book tagChoices=tagChoices illustrators=illustratorChoices writers=writerChoices name=item.name typeName=item.typeName issue_num=item.issue_num size=item.size gender=item.gender brand=item.brand price=item.price vol_num=item.vol_num bindingType=item.bindingType trade=item.trade apparel=item.apparel comic=item.comic includedIn=item.includedIn collects=item.collects figure=item.figure figureType=item.figureType materialType=item.materialType game=item.game gameType=item.gameType Illustrators=item.Illustrators Writers=item.Writers tags=item.tags}}
+{{new-writer-form createWriter="createWriter"}}
+{{new-illustrator-form createIllustrator="createIllustrator"}}

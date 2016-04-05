@@ -5,20 +5,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
   session: Ember.inject.service('session'),
   beforeModel(transition) {
     if(this.get('session.isAuthenticated')){
-      if(this.get('session.currentUser.isAdmin')){
+      if(this.get('session.session.authenticated.user.isAdmin')){
         return true;
       }
     }
     $('#login-error').modal('toggle');
     transition.abort();
-    this.transitionTo('/');
+    this.transitionTo('index');
   },
-  actions:{
-    willTransition(transition){
-      if(transition.targetName==='index'){
-        $('#sidebar-wrapper').toggleClass('hidden');
-        return true;
-      }
-    }
-  }
 });

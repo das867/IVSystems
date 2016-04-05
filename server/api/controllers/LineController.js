@@ -1,7 +1,7 @@
 /**
- * Subscription_BoxController
+ * LineController
  *
- * @description :: Server-side logic for managing Subscription_boxes
+ * @description :: Server-side logic for managing lines
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

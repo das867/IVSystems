@@ -1,0 +1,7 @@
+<div class="add-inven-message">
+  {{search-bar clearSearch="clearSearch" tagChoices=tagChoices name=name type=type tag=tag materialType=materialType gameType=gameType figureType=figureType apparelType=apparelType size=size }}
+</div>
+<hr style="margin-top:10px;margin-bottom:10px">
+{{#each filteredItems as |item|}}
+  <p>{{item.id}} {{item.name}}</p>
+{{/each}}

@@ -7,22 +7,52 @@
       <table class="table">
         <thead>
           <tr>
-            <th colspan="2">Item Name</th>
-            <th>COND</th>
-            <th>QTY</th>
+            <th>Item Name</th>
+            <th>PRICE</th>
             <th>CATEGORY</th>
             <th>Other</th>
+
           </tr>
         </thead>
         <tbody>
           {{#each model as |item|}}
             <tr>
-              <td>{{item.id}}</td>
               <td>{{item.name}}</td>
-              <td>NA</td>
-              <td>{{item.quanity}}</td>
+              <td>{{item.sales_price}}</td>
               <td>{{item.typeName}}</td>
-              <td>NA</td>
+              <td>
+                {{#each item.Details as |detail|}}
+                Quanity: {{detail.quanity}}
+                {{#if detail.issue_num}}
+                  Issue Num: {{detail.issue_num}}
+                  <br>
+                {{/if}}
+                {{#if detail.size}}
+                  Size: {{detail.size}}
+                  <br>
+                {{/if}}
+                {{/each}}
+                {{#if item.gender}}
+                  Gender: {{item.gender}}
+                {{/if}}
+                {{#if item.vol_num}}
+                  Vol: {{item.vol_num}}
+                  <br>
+                {{/if}}
+                {{#if item.bindingType}}
+                  Vol: {{item.bindingType}}
+                {{/if}}
+                {{#if item.figureType}}
+                  Figure Type: {{item.figureType}}
+                  <br>
+                {{/if}}
+                {{#if item.materialType}}
+                  Material Type: {{item.materialType}}
+                {{/if}}
+                {{#if item.gameType}}
+                  Game Type: {{item.gameType}}
+                {{/if}}
+              </td>
             </tr>
           {{/each}}
 

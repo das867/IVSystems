@@ -6,19 +6,57 @@ export default Ember.Route.extend({
        refreshModel: true
     }
   },
+  beforeModel(){
+    this.set('item',null);
+    this.set('id', null);
+    this.set('newItemAdded',false);
+    this.set('type',null);
+    this.set('total',null);
+    this.set('quanity',null);
+    this.set('issue_num',null);
+    this.set('type'null);
+    this.set('size',null);
+  },
   model(params){
       return this.store.query('item',params);
   },
   resetController(controller, isExiting, transition) {
     if (isExiting) {
       this.set('item',null);
-      // isExiting would be false if only the route's model was changing
       this.set('id', null);
+      this.set('newItemAdded',false);
+      this.set('type',null);
+      this.set('total',null);
+      this.set('quanity',null);
+      this.set('issue_num',null);
+      this.set('type'null);
+      this.set('size',null);
     }
   },
   actions:{
-    changeScreen(){
-      this.transitionTo('general.view_inventory');
+    willTransition(transition) {
+      this.set('item',null);
+      this.set('id', null);
+      this.set('newItemAdded',false);
+      this.set('type',null);
+      this.set('total',null);
+      this.set('quanity',null);
+      this.set('issue_num',null);
+      this.set('type'null);
+      this.set('size',null);
+      return true;
+    },
+    clearValue(){
+      alert("hello");
+      this.set('item',null);
+      this.set('id', null);
+      this.set('newItemAdded',false);
+      this.set('type',null);
+      this.set('total',null);
+      this.set('quanity',null);
+      this.set('issue_num',null);
+      this.set('type'null);
+      this.set('size',null);
     }
   }
 });
