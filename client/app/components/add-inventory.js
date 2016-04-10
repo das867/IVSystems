@@ -25,6 +25,7 @@ export default Ember.Component.extend({
   lillustrat:null,
   newWriter:false,
   newIllustrator:false,
+  collectedComics:[],
   newVendor:Ember.computed('vendor',function(){
     if(this.get('vendor')){
       if(this.get('vendor').content!=null){
@@ -122,6 +123,15 @@ export default Ember.Component.extend({
     }
   }),
   actions:{
+    setCollected(event){
+      const comic = Ember.$(event.target).val();
+      if(this.get('collectedComics').contains(comic)){
+        this.get('collectedComics').removeObject(comic);
+      }else {
+        this.get('collectedComics').pushObject(comic);
+      }
+      console.log(this.get('collectedComics'));
+    },
     setVendor(value){
       this.set('vendor',value);
     },
@@ -176,6 +186,7 @@ export default Ember.Component.extend({
         writers:this.get('writersOptions'),
         illustrators:this.get('illustratorOptions'),
         tags:this.get('tagOptions'),
+        comics:this.get('collectedComics')
       };
     this.set('total',0);
     this.set('quanity',null);

@@ -115,10 +115,32 @@
               optionLabelPath="content.name"
               selection=bindingChoice
               value=bindingType
-              placeholder="Select an item" }}
+              placeholder="Binding" }}
           </div>
           {{/if}}
         </div>
+        {{#if trade}}
+        <div class="row">
+          <div class="col-xs-12">
+            <select class="form-control" onchange={{action 'setCollected'}}>
+              {{#each comics as |comic|}}
+                {{#each comic.Details as |detail|}}
+                  <option value={{detail.id}}>{{comic.name}} #{{detail.issue_num}}</option>
+                {{/each}}
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            {{#each collectedComics as |detail|}}
+              {{detail}}
+              {{else}}
+              hello
+            {{/each}}
+          </div>
+        </div>
+        {{/if}}
         <br>
         {{/if}}
         {{#if apparel}}

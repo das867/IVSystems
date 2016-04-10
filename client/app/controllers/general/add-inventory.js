@@ -10,6 +10,9 @@ export default Ember.Controller.extend({
   issue_num:null,
   size:null,
   type:null,
+  comics:Ember.computed(function(){
+    return this.store.query('item',{comic:1});
+  }),
   vendorChoices:Ember.computed(function(){
     return this.store.findAll('vendor');
   }),
@@ -73,15 +76,22 @@ export default Ember.Controller.extend({
       var currentQuanity;
       if(this.get('item').get('typeName')==="comic"||this.get('item').get('typeName')==="trade"){
         values.writers.forEach(function(item,index){
-            _this.store.peekRecord('writer',item).then(function(writer){
-            this.get('item').get('Writers').pushObject(writer);
+          _this.store.peekRecord('writer',item).then(function(writer){
+              _this.get('item').get('Writers').pushObject(writer);
           });
         });
         values.illustrators.forEach(function(item,index){
           _this.store.peekRecord('illustrator',item).then(function(illustrator){
-          this.get('item').get('Illustrators').pushObject(illustrator);
+            _this.get('item').get('Illustrators').pushObject(illustrator);
+          });
         });
-      });
+        if(this.get('item').get('typeName')==="trade"){
+          values.comics.forEach(function(item,index){
+            _this.store.peekRecord('detail',item).then(function(detail){
+              _this.get('item').get('collects').pushObject(comicIssue);
+            });
+          });
+        }
       }
       console.log(values.tags);
       values.tags.forEach(function(item,index){

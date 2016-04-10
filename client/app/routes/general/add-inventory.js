@@ -1,5 +1,4 @@
 import Ember from 'ember';
-
 export default Ember.Route.extend({
   queryParams: {
     id: {
@@ -14,7 +13,7 @@ export default Ember.Route.extend({
     this.set('total',null);
     this.set('quanity',null);
     this.set('issue_num',null);
-    this.set('type'null);
+    this.set('type',null);
     this.set('size',null);
   },
   model(params){
@@ -29,7 +28,7 @@ export default Ember.Route.extend({
       this.set('total',null);
       this.set('quanity',null);
       this.set('issue_num',null);
-      this.set('type'null);
+      this.set('type',null);
       this.set('size',null);
     }
   },
@@ -42,7 +41,7 @@ export default Ember.Route.extend({
       this.set('total',null);
       this.set('quanity',null);
       this.set('issue_num',null);
-      this.set('type'null);
+      this.set('type',null);
       this.set('size',null);
       return true;
     },
@@ -55,7 +54,7 @@ export default Ember.Route.extend({
       this.set('total',null);
       this.set('quanity',null);
       this.set('issue_num',null);
-      this.set('type'null);
+      this.set('type',null);
       this.set('size',null);
     }
   }

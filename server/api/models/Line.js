@@ -31,8 +31,32 @@ module.exports = {
       type:'boolean',
       defaultsTo:false
     },
+    sale:{
+      type:'boolean',
+      defaultsTo:false
+    },
     user_id:{
       model:'user'
     }
+  },
+  afterCreate:function(options,cb){
+    Line.findOne(options.id).exec(function(err,line){
+      console.log(line);
+      if(line.add){
+        cb();
+      } else {
+        Order.findOne(line.order_id).exec(function(err,order){
+          console.log(order);
+          if(err) return cb(err)
+          if(order.type==="receipt"){
+            line.sale = true;
+            line.save(function(err,res){
+              console.log(res);
+              cb();
+            });
+          }
+        });
+      }
+    });
   }
 };
