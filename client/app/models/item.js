@@ -14,7 +14,7 @@ export default DS.Model.extend({
   tags:DS.hasMany('tag'),
   vendor_id:DS.belongsTo('vendor'),
   brand:DS.belongsTo('brand'),
-  collects:DS.hasMany('item',{ inverse: 'includedIn' }),
+  collects:DS.hasMany('detail',{ inverse: 'includedIn' }),
   //For Trades
 
   vol_num:DS.attr(),
@@ -27,10 +27,8 @@ export default DS.Model.extend({
   gender:DS.attr(),
   apparelType:DS.attr(),
   //For Comics
-
-
-  includedIn:DS.hasMany('item', {inverse: 'collects'}),
   subscriptions:DS.hasMany('box'),
+
   //For Figures
 
   figureType:DS.attr(),
@@ -55,6 +53,17 @@ export default DS.Model.extend({
       return "figure";
     }
     return null;
+  }),
+  numberSold:Ember.computed('lineitems',function(){
+    var lineitems = this.get('lineitems');
+    var totalSold = 0;
+    var order;
+    var _this=this;
+    lineitems = lineitems.filterBy('add',false);
+    lineitems.forEach(function(item,index){
+      totalSold+=item.get('quanity');
+      console.log(item.get('quanity'));
+    });
+    return totalSold;
   })
-
 });

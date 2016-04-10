@@ -1,1 +1,166 @@
-{{outlet}}
+<div class="row">
+  {{!--<div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+      <a href='#comic'  class="btn btn-default">Comics</a>
+    </div>
+    <div class="btn-group" role="group">
+      <a href='#trade' class="btn btn-default">Trade</a>
+    </div>
+    <div class="btn-group" role="group">
+      <a href='#game' class="btn btn-default">Game</a>
+    </div>
+    <div class="btn-group" role="group">
+      <a href='#figure'  class="btn btn-default">Figure</a>
+    </div>
+    <div class="btn-group" role="group">
+      <a href='#apparel' role="button" class="btn btn-default">Apparel</a>
+    </div>
+  </div>--}}
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h5 id="comic" >Comics</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item Id</th>
+          <th>Item Name</th>
+          <th>PRICE</th>
+          <th>Sales Price</th>
+          <th>Number Sold</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+        {{#if item.comic}}
+          <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.sales_price}}</td>
+            <td>{{item.numberSold}}</td>
+          </tr>
+          {{/if}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 id="trade">Trade</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item Id</th>
+            <th>Item Name</th>
+            <th>PRICE</th>
+            <th>Sales Price</th>
+            <th>Number Sold</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |item|}}
+            {{#if item.trade}}
+            <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.price}}</td>
+              <td>{{item.sales_price}}</td>
+              <td>{{item.numberSold}}</td>
+            </tr>
+            {{/if}}
+          {{/each}}
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 id="game">Game</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item Id</th>
+            <th>Item Name</th>
+            <th>PRICE</th>
+            <th>Sales Price</th>
+            <th>Number Sold</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |item|}}
+            {{#if item.game}}
+            <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.price}}</td>
+              <td>{{item.sales_price}}</td>
+              <td>{{item.numberSold}}</td>
+            </tr>
+            {{/if}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 id="figure">Figures</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item Id</th>
+            <th>Item Name</th>
+            <th>PRICE</th>
+            <th>Sales Price</th>
+            <th>Number Sold</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |item|}}
+            {{#if item.figure}}
+            <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.price}}</td>
+              <td>{{item.sales_price}}</td>
+              <td>{{item.numberSold}}</td>
+            </tr>
+            {{/if}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 id="apparel">Apparel</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item Id</th>
+            <th>Item Name</th>
+            <th>PRICE</th>
+            <th>Sales Price</th>
+            <th>Number Sold</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |item|}}
+            {{#if item.apparel}}
+            <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.price}}</td>
+              <td>{{item.sales_price}}</td>
+              <td>{{item.numberSold}}</td>
+            </tr>
+            {{/if}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>

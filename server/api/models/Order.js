@@ -14,16 +14,16 @@ module.exports = {
       primaryKey:true
     },
     grand_total:{
-      type:'float',
-      required:true
+      type:'string',
+      //required:true
     },
     subtotal:{
-      type:'float',
-      required:true
+      type:'string',
+      //required:true
     },
     type:{
       type:'string',
-      enum:['reorder','reciept','return_receipt','return']
+      enum:['reorder','receipt','return_receipt','return']
     },
     original_receipt:{
       model:'Order',

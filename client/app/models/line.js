@@ -6,5 +6,7 @@ export default DS.Model.extend({
   quanity:DS.attr(),
   order_id:DS.belongsTo('order'),
   user_id:DS.belongsTo('user'),
-  add:DS.attr('boolean')
+  add:DS.attr('boolean'),
+  sale:DS.attr('boolean'),
+  createdAt:DS.attr('date'),
 });
