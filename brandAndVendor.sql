@@ -41,3 +41,44 @@ INSERT INTO tag(id, name) VALUES(null,'Hawkman')
 INSERT INTO tag(id, name) VALUES(null,'Wonder Woman')
 INSERT INTO tag(id, name) VALUES(null,'Supergirl')
 INSERT INTO tag(id, name) VALUES(null,'The Walking Dead')
+
+INSERT INTO brands(id, name) VALUES(null, 'ACE Comics');
+INSERT INTO brands(id, name) VALUES(null, 'All Star DC Comics');
+INSERT INTO brands(id, name) VALUES(null, 'Atlas Comics');
+INSERT INTO brands(id, name) VALUES(null, 'Caliber Comics');
+INSERT INTO brands(id, name) VALUES(null, 'Calvary Comics');
+INSERT INTO brands(id, name) VALUES(null, 'DC Comics');
+INSERT INTO brands(id, name) VALUES(null, 'D. C. Thomson & Co. Ltd');
+INSERT INTO brands(id, name) VALUES(null, 'Deep Sea Comics');
+INSERT INTO brands(id, name) VALUES(null, 'Disney Comics');
+INSERT INTO brands(id, name) VALUES(null, 'La Pastèque');
+INSERT INTO brands(id, name) VALUES(null, 'Marvel Comics');
+INSERT INTO brands(id, name) VALUES(null, 'Marvel Adventures');
+INSERT INTO brands(id, name) VALUES(null, 'Marvel Age');
+INSERT INTO brands(id, name) VALUES(null, 'Matrix Graphic Series');
+INSERT INTO brands(id, name) VALUES(null, 'Maverick');
+INSERT INTO brands(id, name) VALUES(null, 'Max Comics (MAX)');
+INSERT INTO brands(id, name) VALUES(null, 'Media Factory');
+INSERT INTO brands(id, name) VALUES(null, 'Michael Hunt Publishing');
+INSERT INTO brands(id, name) VALUES(null, 'Mighty Comics');
+INSERT INTO brands(id, name) VALUES(null, 'Milestone Media');
+INSERT INTO brands(id, name) VALUES(null, 'Mille-Îles');
+INSERT INTO brands(id, name) VALUES(null, 'Millennium Publications');
+INSERT INTO brands(id, name) VALUES(null, 'Milk Shadow Books');
+INSERT INTO brands(id, name) VALUES(null, 'MiniKomix');
+INSERT INTO brands(id, name) VALUES(null, 'Mirage Studios');
+INSERT INTO brands(id, name) VALUES(null, 'Mirror Comics');
+INSERT INTO brands(id, name) VALUES(null, 'M. F. Enterprises');
+INSERT INTO brands(id, name) VALUES(null, 'MLJ Magazines');
+INSERT INTO brands(id, name) VALUES(null, 'Mojo Press');
+INSERT INTO brands(id, name) VALUES(null, 'Moonstone Books');
+INSERT INTO brands(id, name) VALUES(null, 'MOSAIK Steinchen für Steinchen Verlag');
+INSERT INTO brands(id, name) VALUES(null, 'M Press');
+INSERT INTO brands(id, name) VALUES(null, 'MU Press');
+INSERT INTO brands(id, name) VALUES(null, 'MyInkComics.com');
+INSERT INTO brands(id, name) VALUES(null, 'NBM Publishing');
+INSERT INTO brands(id, name) VALUES(null, 'Neko Press');
+INSERT INTO brands(id, name) VALUES(null, 'Standard Comics');
+INSERT INTO brands(id, name) VALUES(null, 'New Century Comics');
+INSERT INTO brands(id, name) VALUES(null, 'New Comics Group');
+INSERT INTO brands(id, name) VALUES(null, 'Square Enix');
