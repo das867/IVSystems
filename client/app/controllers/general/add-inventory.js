@@ -74,6 +74,16 @@ export default Ember.Controller.extend({
       var total = values.total*1;
       var detail;
       var currentQuanity;
+      console.log(values.vendor);
+      if(values.vendor!=null){
+        var vendor = this.store.peekRecord('vendor',values.vendor);
+        this.get('item').set('vendor_id',vendor);
+      }
+      console.log(values.brand);
+      if(values.brand!=null){
+        var brand = this.store.peekRecord('brand',values.brand);
+        this.get('item').set('brand',values.brand);
+      }
       if(this.get('item').get('typeName')==="comic"||this.get('item').get('typeName')==="trade"){
         values.writers.forEach(function(item,index){
           _this.store.peekRecord('writer',item).then(function(writer){

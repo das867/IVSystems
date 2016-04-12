@@ -26,6 +26,8 @@ export default Ember.Component.extend({
   newWriter:false,
   newIllustrator:false,
   collectedComics:[],
+  vendor_id:null,
+  brand:null,
   newVendor:Ember.computed('vendor',function(){
     if(this.get('vendor')){
       if(this.get('vendor').content!=null){
@@ -133,7 +135,9 @@ export default Ember.Component.extend({
       console.log(this.get('collectedComics'));
     },
     setVendor(value){
-      this.set('vendor',value);
+      console.log(value);
+      this.set('vendor_id',value);
+      console.log(this.get('vendor_id'));
     },
     setBrand(value){
       this.set('brand',value);
@@ -157,7 +161,6 @@ export default Ember.Component.extend({
     },
     setSize(value){
       this.set('detail_id',value);
-      this.sendAction('checkForDetail');
     },
     setWriters(event){
       const writer = Ember.$(event.target).val();
@@ -186,7 +189,9 @@ export default Ember.Component.extend({
         writers:this.get('writersOptions'),
         illustrators:this.get('illustratorOptions'),
         tags:this.get('tagOptions'),
-        comics:this.get('collectedComics')
+        comics:this.get('collectedComics'),
+        vendor:this.get('vendor_id'),
+        brand:this.get('brand')
       };
     this.set('total',0);
     this.set('quanity',null);
