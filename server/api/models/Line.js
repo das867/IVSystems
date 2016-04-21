@@ -13,8 +13,8 @@ module.exports = {
       autoIncrement:true,
       primaryKey:true
     },
-    item_id:{
-      model:'Item'
+    detail_id:{
+      model:'detail'
     },
     subTotal:{
       type:'float',
@@ -35,9 +35,13 @@ module.exports = {
       type:'boolean',
       defaultsTo:false
     },
+    removal:{
+      type:'boolean',
+      defaultsTo:false
+    },
     user_id:{
       model:'user'
-    }
+    },
   },
   afterCreate:function(options,cb){
     Line.findOne(options.id).exec(function(err,line){

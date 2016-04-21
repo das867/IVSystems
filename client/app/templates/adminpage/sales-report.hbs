@@ -31,14 +31,21 @@
         </tr>
       </thead>
       <tbody>
-        {{#each model as |item|}}
-        {{#if item.comic}}
+        {{#each model as |detail|}}
+        {{#if detail.item_id.comic}}
           <tr>
-            <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
-            <td>{{item.sales_price}}</td>
-            <td>{{item.numberSold}}</td>
+            <td>{{detail.item_id.id}}</td>
+            <td>{{detail.item_id.name}}
+              {{#if detail.item_id.comic}}
+              Issue #: {{detail.issue_num}}
+              {{/if}}
+              {{#if detail.item_id.apparel}}
+              Size: {{detail.size}}
+              {{/if}}
+            </td>
+            <td>{{detail.item_id.price}}</td>
+            <td>{{detail.item_id.sales_price}}</td>
+            <td>{{detail.numberSold}}</td>
           </tr>
           {{/if}}
         {{/each}}
@@ -60,14 +67,21 @@
           </tr>
         </thead>
         <tbody>
-          {{#each model as |item|}}
-            {{#if item.trade}}
+          {{#each model as |detail|}}
+          {{#if detail.item_id.trade}}
             <tr>
-              <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.price}}</td>
-              <td>{{item.sales_price}}</td>
-              <td>{{item.numberSold}}</td>
+              <td>{{detail.item_id.id}}</td>
+              <td>{{detail.item_id.name}}
+                {{#if detail.item_id.comic}}
+                Issue #: {{detail.issue_num}}
+                {{/if}}
+                {{#if detail.item_id.apparel}}
+                Size: {{detail.size}}
+                {{/if}}
+              </td>
+              <td>{{detail.item_id.price}}</td>
+              <td>{{detail.item_id.sales_price}}</td>
+              <td>{{detail.numberSold}}</td>
             </tr>
             {{/if}}
           {{/each}}
@@ -91,17 +105,25 @@
           </tr>
         </thead>
         <tbody>
-          {{#each model as |item|}}
-            {{#if item.game}}
+          {{#each model as |detail|}}
+          {{#if detail.item_id.game}}
             <tr>
-              <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.price}}</td>
-              <td>{{item.sales_price}}</td>
-              <td>{{item.numberSold}}</td>
+              <td>{{detail.item_id.id}}</td>
+              <td>{{detail.item_id.name}}
+                {{#if detail.item_id.comic}}
+                Issue #: {{detail.issue_num}}
+                {{/if}}
+                {{#if detail.item_id.apparel}}
+                Size: {{detail.size}}
+                {{/if}}
+              </td>
+              <td>{{detail.item_id.price}}</td>
+              <td>{{detail.item_id.sales_price}}</td>
+              <td>{{detail.numberSold}}</td>
             </tr>
             {{/if}}
           {{/each}}
+
         </tbody>
       </table>
     </div>
@@ -120,17 +142,25 @@
           </tr>
         </thead>
         <tbody>
-          {{#each model as |item|}}
-            {{#if item.figure}}
+          {{#each model as |detail|}}
+          {{#if detail.item_id.figure}}
             <tr>
-              <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.price}}</td>
-              <td>{{item.sales_price}}</td>
-              <td>{{item.numberSold}}</td>
+              <td>{{detail.item_id.id}}</td>
+              <td>{{detail.item_id.name}}
+                {{#if detail.item_id.comic}}
+                Issue #: {{detail.issue_num}}
+                {{/if}}
+                {{#if detail.item_id.apparel}}
+                Size: {{detail.size}}
+                {{/if}}
+              </td>
+              <td>{{detail.item_id.price}}</td>
+              <td>{{detail.item_id.sales_price}}</td>
+              <td>{{detail.numberSold}}</td>
             </tr>
             {{/if}}
           {{/each}}
+
         </tbody>
       </table>
     </div>
@@ -149,17 +179,25 @@
           </tr>
         </thead>
         <tbody>
-          {{#each model as |item|}}
-            {{#if item.apparel}}
+          {{#each model as |detail|}}
+          {{#if detail.item_id.apparel}}
             <tr>
-              <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.price}}</td>
-              <td>{{item.sales_price}}</td>
-              <td>{{item.numberSold}}</td>
+              <td>{{detail.item_id.id}}</td>
+              <td>{{detail.item_id.name}}
+                {{#if detail.item_id.comic}}
+                Issue #: {{detail.issue_num}}
+                {{/if}}
+                {{#if detail.item_id.apparel}}
+                Size: {{detail.size}}
+                {{/if}}
+              </td>
+              <td>{{detail.item_id.price}}</td>
+              <td>{{detail.item_id.sales_price}}</td>
+              <td>{{detail.numberSold}}</td>
             </tr>
             {{/if}}
           {{/each}}
+
         </tbody>
       </table>
     </div>

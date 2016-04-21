@@ -1,1 +1,16 @@
-{{outlet}}
+<div class="row">
+  <div class="col-xs-6 col-sm-4">
+    {{invoice-finder findInvoice="findInvoice" vendors=model.vendors}}
+  </div>
+  <div class="col-xs-6 col-sm-offset-4 col-sm-4">
+    {{low-inventory-button details=model.details}}
+  </div>
+</div>
+<br>
+<div class="row">
+  {{invoice-graph removeLineItem="removeLineItem" sendInvoice="sendInvoice" setQuanity="setQuanity" addLineItem="addLineItem" invoice=invoice vendorItems=vendorItems vendor=vendor}}
+</div>
+
+
+
+{{low-inventory-list findLowInvoice="findLowInvoice" details=model.details}}

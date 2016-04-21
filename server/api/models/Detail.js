@@ -28,5 +28,9 @@ module.exports = {
       type:'string',
       enum:['XS','S','M','L','XL','XXL'],
     },
+    lineitems:{
+      collection:'line',
+      via:'detail_id'
+    },
   }
 };

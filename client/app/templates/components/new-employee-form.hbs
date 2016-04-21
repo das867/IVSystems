@@ -10,23 +10,23 @@
         <div class="modal-body" style="background-color: #15b9d6; color:white;">
           <div class="form-group">
             <label for="firstName">First Name</label>
-            {{input type="text" value=first_name class="form-control" }}
+            {{input type="text" value=first_name class="form-control" required}}
           </div>
           <div class="form-group">
             <label for="lastName">Last Name</label>
-            {{input type="text" value=last_name class="form-control" }}
+            {{input type="text" value=last_name class="form-control" required}}
           </div>
           <div class="form-group">
             <label for="lastName">Username</label>
-            {{input type="text" value=username class="form-control" }}
+            {{input type="text" value=username class="form-control" required}}
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
-            {{input type="password" value=password class="form-control" }}
+            <label for="password">Password (Must be Greater than 8)</label>
+            {{input type="password" min='8' value=password class="form-control" required}}
           </div>
           <div class="form-group">
             <label for="password">Confirm Password</label>
-            {{input type="password" value=c_password class="form-control" }}
+            {{input type="password" min='8' value=c_password class="form-control" required }}
           </div>
           <div class="form-group">
             <label>{{input type="checkbox" checked=isAdmin}} Manager Role</label>

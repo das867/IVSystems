@@ -1,18 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  session: Ember.inject.service('session'),
   itemTypes:[{name:'comic'},{name:'figure'},{name:'game'},{name:'trade'},{name:'apparel'}],
   type:null,
   genderTypes:[{name:'male'},{name:'female'},{name:'unisex'}],
-  genderChoice:null,
   figureChoices:[{name:'game'},{name:'figure'},{name:'collectable'},{name:'action'}],
-  figureChoice:null,
+  //figureChoice:null,
   gameChoices:[{name:'card'},{name:'dice'},{name:'board'},{name:'role playing'}],
-  gameChoice:null,
+  //gameChoice:null,
   materialChoices:[{name:'plush'},{name:'vinyl'},{name:'plastic'},{name:'die-cast'},{name:'metal'}],
-  materialChoice:null,
+  //materialChoice:null,
   bindingChoices:[{name:'hardback'},{name:'paperback'}],
-  bindingChoice:null,
+
   total:0,
   quanity:0,
   issue_num:null,
@@ -36,7 +36,6 @@ export default Ember.Component.extend({
         return true;
       }
     }
-
   }),
   newBrand:Ember.computed('brand',function(){
     if(this.get('brand')){
@@ -55,28 +54,7 @@ export default Ember.Component.extend({
   writersOptions:[],
   illustratorOptions:[],
   tagOptions:[],
-  bindingOberserver:Ember.observer('bindingType','bindingChoice',function(){
-    if(this.bindingChoice!=null){
-      this.set('bindingType',this.bindingChoice.name);
-    }
-  }),
-  materialObserver:Ember.observer('materialType','materialChoice',function(){
-    if(this.materialChoice!=null){
-      this.set('materialType',this.materialChoice.name);
-    }
-  }),
-  gameObserver:Ember.observer('gameType','gameChoice',function(){
-    if(this.gameChoice!=null){
-      this.set('gameType',this.gameChoice.name);
-    }
-  }),
-  figureObserver:Ember.observer('figureType','figureChoice', function(){
-    var item = this.get('item');
 
-    if(this.figureChoice!=null){
-      this.set('figureType',this.figureChoice.name);
-    }
-  }),
   sizeObserver:Ember.observer('size','sizeChoice',function(){
     var item = this.get('item');
 
@@ -84,13 +62,6 @@ export default Ember.Component.extend({
       this.set('size',this.sizeChoice.name);
     }
 
-  }),
-  genderObserver:Ember.observer('gender','genderChoice',function(){
-    var item = this.get('item');
-
-    if(this.genderChoice!=null){
-      this.set('gender',this.genderChoice.name);
-    }
   }),
   typeObserver:Ember.observer('type',function(){
     var item=this.get('item');
@@ -160,11 +131,11 @@ export default Ember.Component.extend({
       }
     },
     setSize(value){
+      console.log(value);
       this.set('detail_id',value);
     },
     setWriters(event){
       const writer = Ember.$(event.target).val();
-
       if(writer.get('firstObject') === "other"){
         this.sendAction('newWriter');
       } else
@@ -199,6 +170,30 @@ export default Ember.Component.extend({
     },
     createNewItem(){
       this.sendAction('createNewItem');
+    },
+    deleteItem(value){
+      console.log(value);
+      this.sendAction('deleteItem',value);
+    },
+    setFigure(value){
+      console.log(value);
+      this.set('figureChoice',value);
+    },
+    setMaterial(value){
+      console.log(value);
+      this.set('materialChoice',value);
+    },
+    setApparelType(value){
+      this.set('apparelType',value);
+    },
+    setGame(value){
+      this.set('gameType',value);
+    },
+    setBinding(value){
+      this.set('bindingType',value);
+    },
+    setGender(value){
+      this.set('gender',value);
     }
   }
 });

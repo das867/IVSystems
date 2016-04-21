@@ -34,7 +34,14 @@ export default Ember.Controller.extend({
     }
     if(size){
       if(size!= null){
-        items = items.filterBy('size',size);
+        var filterPromise = Ember.RSVP.filter(items,item =>{
+          return item.get('Details').then(detail => {
+            return detail.isAny('size', size);
+          });
+        });
+        return DS.PromiseArray.create({
+          promise: filterPromise
+        });
       }
     }
     if(apparelType){

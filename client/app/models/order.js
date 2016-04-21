@@ -8,5 +8,8 @@ export default DS.Model.extend({
   original_receipt:DS.belongsTo('order',{inverse:'return_receipt'}),
   return_receipt:DS.belongsTo('order',{inverse:'original_receipt'}),
   reason:DS.attr(),
-  user_id:DS.belongsTo('user')
+  user_id:DS.belongsTo('user'),
+  vendor_id:DS.belongsTo('vendor'),
+  createdAt:DS.attr(),
+  closedInvoice:DS.attr('boolean')
 });

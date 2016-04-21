@@ -28,10 +28,6 @@ module.exports = {
       type:'string',
       //required:true
     },
-    lineitems:{
-      collection:'line',
-      via:'item_id'
-    },
     tags:{
       collection:'tag',
       via:'Items',
@@ -107,7 +103,7 @@ module.exports = {
     },
     figureType:{
       type:'string',
-      enum:['game figure','collectable','action']
+      enum:['game','figure','collectable','action']
     },
     materialType:{
       type:'string',
@@ -125,9 +121,7 @@ module.exports = {
     },
   },
   afterCreate:function(options,cb){
-    console.log(options.id);
     Item.findOne(options.id).populate('Details').exec(function(err,item){
-      console.log(item.Details);
       console.log(item.apparel);
       if(item.apparel){
         item.Details.add({item_id:item.id,quanity:0,size:'XS'});

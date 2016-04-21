@@ -10,34 +10,75 @@ INSERT INTO vendor(id, name, strAddress, city, state, zipcode) VALUES(null, 'Cai
 INSERT INTO vendor(id, name, strAddress, city, state, zipcode) VALUES(null, 'CollectorsRUs','1902 Renaissance Parkway','Atlanta ','GA','30308');
 
 
-INSERT INTO tag(id, name) VALUES(null,'Marvel')
-INSERT INTO tag(id, name) VALUES(null,'Batman')
-INSERT INTO tag(id, name) VALUES(null,'Hulk')
-INSERT INTO tag(id, name) VALUES(null,'Avengers')
-INSERT INTO tag(id, name) VALUES(null,'Superman')
-INSERT INTO tag(id, name) VALUES(null,'Game of Thrones')
-INSERT INTO tag(id, name) VALUES(null,'Aquaman')
-INSERT INTO tag(id, name) VALUES(null,'Naruto')
-INSERT INTO tag(id, name) VALUES(null,'Bleach')
-INSERT INTO tag(id, name) VALUES(null,'Attack on Titian')
-INSERT INTO tag(id, name) VALUES(null,'DC ')
-INSERT INTO tag(id, name) VALUES(null,'Flash')
-INSERT INTO tag(id, name) VALUES(null,'Justic League')
-INSERT INTO tag(id, name) VALUES(null,'Deadpool')
-INSERT INTO tag(id, name) VALUES(null,'Spiderman')
-INSERT INTO tag(id, name) VALUES(null,'Captain America')
-INSERT INTO tag(id, name) VALUES(null,'Magic The Gathering')
-INSERT INTO tag(id, name) VALUES(null,'Dugeon & Dragons')
-INSERT INTO tag(id, name) VALUES(null,'Yugioh')
-INSERT INTO tag(id, name) VALUES(null,'Pokemon')
-INSERT INTO tag(id, name) VALUES(null,'Wolverine')
-INSERT INTO tag(id, name) VALUES(null,'X-Men')
-INSERT INTO tag(id, name) VALUES(null,'Antman')
-INSERT INTO tag(id, name) VALUES(null,'DareDevil')
-INSERT INTO tag(id, name) VALUES(null,'Thor')
-INSERT INTO tag(id, name) VALUES(null,'Iron Man')
-INSERT INTO tag(id, name) VALUES(null,'Nightwing')
-INSERT INTO tag(id, name) VALUES(null,'Hawkman')
-INSERT INTO tag(id, name) VALUES(null,'Wonder Woman')
-INSERT INTO tag(id, name) VALUES(null,'Supergirl')
-INSERT INTO tag(id, name) VALUES(null,'The Walking Dead')
+INSERT INTO tag(id, name) VALUES(null,'Marvel');
+INSERT INTO tag(id, name) VALUES(null,'Batman');
+INSERT INTO tag(id, name) VALUES(null,'Hulk');
+INSERT INTO tag(id, name) VALUES(null,'Avengers');
+INSERT INTO tag(id, name) VALUES(null,'Superman');
+INSERT INTO tag(id, name) VALUES(null,'Game of Thrones');
+INSERT INTO tag(id, name) VALUES(null,'Aquaman');
+INSERT INTO tag(id, name) VALUES(null,'Naruto');
+INSERT INTO tag(id, name) VALUES(null,'Bleach');
+INSERT INTO tag(id, name) VALUES(null,'Attack on Titian');
+INSERT INTO tag(id, name) VALUES(null,'DC ');
+INSERT INTO tag(id, name) VALUES(null,'Flash');
+INSERT INTO tag(id, name) VALUES(null,'Justic League');
+INSERT INTO tag(id, name) VALUES(null,'Deadpool');
+INSERT INTO tag(id, name) VALUES(null,'Spiderman');
+INSERT INTO tag(id, name) VALUES(null,'Captain America');
+INSERT INTO tag(id, name) VALUES(null,'Magic The Gathering');
+INSERT INTO tag(id, name) VALUES(null,'Dugeon & Dragons');
+INSERT INTO tag(id, name) VALUES(null,'Yugioh');
+INSERT INTO tag(id, name) VALUES(null,'Pokemon');
+INSERT INTO tag(id, name) VALUES(null,'Wolverine');
+INSERT INTO tag(id, name) VALUES(null,'X-Men');
+INSERT INTO tag(id, name) VALUES(null,'Antman');
+INSERT INTO tag(id, name) VALUES(null,'DareDevil');
+INSERT INTO tag(id, name) VALUES(null,'Thor');
+INSERT INTO tag(id, name) VALUES(null,'Iron Man');
+INSERT INTO tag(id, name) VALUES(null,'Nightwing');
+INSERT INTO tag(id, name) VALUES(null,'Hawkman');
+INSERT INTO tag(id, name) VALUES(null,'Wonder Woman');
+INSERT INTO tag(id, name) VALUES(null,'Supergirl');
+INSERT INTO tag(id, name) VALUES(null,'The Walking Dead');
+
+INSERT INTO brand(id, name) VALUES(null, 'ACE Comics');
+INSERT INTO brand(id, name) VALUES(null, 'All Star DC Comics');
+INSERT INTO brand(id, name) VALUES(null, 'Atlas Comics');
+INSERT INTO brand(id, name) VALUES(null, 'Caliber Comics');
+INSERT INTO brand(id, name) VALUES(null, 'Calvary Comics');
+INSERT INTO brand(id, name) VALUES(null, 'DC Comics');
+INSERT INTO brand(id, name) VALUES(null, 'D. C. Thomson & Co. Ltd');
+INSERT INTO brand(id, name) VALUES(null, 'Deep Sea Comics');
+INSERT INTO brand(id, name) VALUES(null, 'Disney Comics');
+INSERT INTO brand(id, name) VALUES(null, 'La Pastèque');
+INSERT INTO brand(id, name) VALUES(null, 'Marvel Comics');
+INSERT INTO brand(id, name) VALUES(null, 'Marvel Adventures');
+INSERT INTO brand(id, name) VALUES(null, 'Marvel Age');
+INSERT INTO brand(id, name) VALUES(null, 'Matrix Graphic Series');
+INSERT INTO brand(id, name) VALUES(null, 'Maverick');
+INSERT INTO brand(id, name) VALUES(null, 'Max Comics (MAX)');
+INSERT INTO brand(id, name) VALUES(null, 'Media Factory');
+INSERT INTO brand(id, name) VALUES(null, 'Michael Hunt Publishing');
+INSERT INTO brand(id, name) VALUES(null, 'Mighty Comics');
+INSERT INTO brand(id, name) VALUES(null, 'Milestone Media');
+INSERT INTO brand(id, name) VALUES(null, 'Mille-Îles');
+INSERT INTO brand(id, name) VALUES(null, 'Millennium Publications');
+INSERT INTO brand(id, name) VALUES(null, 'Milk Shadow Books');
+INSERT INTO brand(id, name) VALUES(null, 'MiniKomix');
+INSERT INTO brand(id, name) VALUES(null, 'Mirage Studios');
+INSERT INTO brand(id, name) VALUES(null, 'Mirror Comics');
+INSERT INTO brand(id, name) VALUES(null, 'M. F. Enterprises');
+INSERT INTO brand(id, name) VALUES(null, 'MLJ Magazines');
+INSERT INTO brand(id, name) VALUES(null, 'Mojo Press');
+INSERT INTO brand(id, name) VALUES(null, 'Moonstone Books');
+INSERT INTO brand(id, name) VALUES(null, 'MOSAIK Steinchen für Steinchen Verlag');
+INSERT INTO brand(id, name) VALUES(null, 'M Press');
+INSERT INTO brand(id, name) VALUES(null, 'MU Press');
+INSERT INTO brand(id, name) VALUES(null, 'MyInkComics.com');
+INSERT INTO brand(id, name) VALUES(null, 'NBM Publishing');
+INSERT INTO brand(id, name) VALUES(null, 'Neko Press');
+INSERT INTO brand(id, name) VALUES(null, 'Standard Comics');
+INSERT INTO brand(id, name) VALUES(null, 'New Century Comics');
+INSERT INTO brand(id, name) VALUES(null, 'New Comics Group');
+INSERT INTO brand(id, name) VALUES(null, 'Square Enix');

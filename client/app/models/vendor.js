@@ -7,4 +7,5 @@ export default DS.Model.extend({
   state:DS.attr(),
   zipcode:DS.attr(),
   Items:DS.hasMany('item'),
+  Orders:DS.hasMany('order')
 });

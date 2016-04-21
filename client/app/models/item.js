@@ -7,10 +7,10 @@ export default DS.Model.extend({
   trade:DS.attr('boolean',{ defaultValue: false }),
   apparel:DS.attr('boolean',{ defaultValue: false }),
   price:DS.attr('dollars'),
-  Details:DS.hasMany('detail'),
+  Details:DS.hasMany('detail',),
   name:DS.attr(),
   sales_price:DS.attr(),
-  lineitems:DS.hasMany('line'),
+  //lineitems:DS.hasMany('line'),
   tags:DS.hasMany('tag'),
   vendor_id:DS.belongsTo('vendor'),
   brand:DS.belongsTo('brand'),
@@ -53,17 +53,5 @@ export default DS.Model.extend({
       return "figure";
     }
     return null;
-  }),
-  numberSold:Ember.computed('lineitems',function(){
-    var lineitems = this.get('lineitems');
-    var totalSold = 0;
-    var order;
-    var _this=this;
-    lineitems = lineitems.filterBy('add',false);
-    lineitems.forEach(function(item,index){
-      totalSold+=item.get('quanity');
-      console.log(item.get('quanity'));
-    });
-    return totalSold;
   })
 });

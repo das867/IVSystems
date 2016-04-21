@@ -42,6 +42,13 @@ module.exports = {
     lineitems:{
       collection:'line',
       via:'order_id'
+    },
+    vendor_id:{
+      model:'vendor'
+    },
+    closedInvoice:{
+      type:'boolean',
+      defaultsTo:'false'
     }
   }
 };

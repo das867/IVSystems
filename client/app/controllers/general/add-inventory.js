@@ -52,7 +52,6 @@ export default Ember.Controller.extend({
   }),
   actions:{
     alertToNoItem(){
-      console.log(this.id);
       var item = this.get('item');
       if(item===null){
         $('.no-item-found').removeClass('hidden');
@@ -64,8 +63,6 @@ export default Ember.Controller.extend({
       this.set('id',null);
       $('.no-item-found').addClass('hidden');
     },
-    checkForDetail(){
-    },
     addItem(values){
       var _this=this;
       var issue_num=values.issue_num;
@@ -74,36 +71,37 @@ export default Ember.Controller.extend({
       var total = values.total*1;
       var detail;
       var currentQuanity;
-      console.log(values.vendor);
       if(values.vendor!=null){
         var vendor = this.store.peekRecord('vendor',values.vendor);
         this.get('item').set('vendor_id',vendor);
       }
-      console.log(values.brand);
       if(values.brand!=null){
         var brand = this.store.peekRecord('brand',values.brand);
         this.get('item').set('brand',values.brand);
       }
       if(this.get('item').get('typeName')==="comic"||this.get('item').get('typeName')==="trade"){
+
         values.writers.forEach(function(item,index){
-          _this.store.peekRecord('writer',item).then(function(writer){
+          var writer = _this.store.peekRecord('writer',item);/*.then(function(writer){
               _this.get('item').get('Writers').pushObject(writer);
-          });
+          });*/
+          _this.get('item').get('Writers').pushObject(writer);
         });
         values.illustrators.forEach(function(item,index){
-          _this.store.peekRecord('illustrator',item).then(function(illustrator){
+          var illustrator = _this.store.peekRecord('illustrator',item);
+          //_this.store.peekRecord('illustrator',item).then(function(illustrator){
             _this.get('item').get('Illustrators').pushObject(illustrator);
-          });
+          //});
         });
         if(this.get('item').get('typeName')==="trade"){
           values.comics.forEach(function(item,index){
-            _this.store.peekRecord('detail',item).then(function(detail){
-              _this.get('item').get('collects').pushObject(comicIssue);
-            });
+            var detail = _this.store.peekRecord('detail',item);
+            //_this.store.peekRecord('detail',item).then(function(detail){
+              _this.get('item').get('collects').pushObject(detail);
+            //});
           });
         }
       }
-      console.log(values.tags);
       values.tags.forEach(function(item,index){
           _this.get('item').get('tags').pushObject(item);
       });
@@ -114,6 +112,7 @@ export default Ember.Controller.extend({
         subTotal:total,
         user_id:this.get('session.currentUser'),
       }).save();
+      //console.log(values.detail_id);
       if(values.newComic){
         this.store.createRecord('detail',{
           item_id:this.get('item'),
@@ -122,23 +121,23 @@ export default Ember.Controller.extend({
           quanity:quanity
         }).save();
       } else if (values.detail_id) {
-        console.log("hello");
         detail = this.store.peekRecord('detail',values.detail_id);
         currentQuanity = detail.get('quanity')*1;
         detail.set('quanity',currentQuanity+quanity);
         detail.save();
-        console.log(detail);
       } else {
         detail = this.get('item').get('Details').get('firstObject');
         currentQuanity = detail.get('quanity')*1;
         detail.set('quanity',currentQuanity+quanity);
         detail.save();
       }
-      this.get('item').save().then(function(){
-        _this.send('clearValue');
-      },function(reason){
-        console.log(reason);
+      this.store.findRecord('item',this.get('id')).then(function(item){
+        item.save().then(function(){
+          _this.set('tagOptions',[]);
+          _this.transitionToRoute({ queryParams: { id: 'null' }});
+        });
       });
+
     },
     setType(value){
       this.set('type',value);
@@ -171,6 +170,31 @@ export default Ember.Controller.extend({
         first_name:values.fname,
         last_name:values.lname
       }).save();
+    },
+    deleteItem(value){
+      var _this=this;
+      this.store.createRecord('line',{
+        removal:true,
+        add:false,
+        item_id:this.get('item'),
+        user_id:this.get('session.currentUser')
+      });
+      this.store.query('detail',{item_id:value}).then(function(details){
+        console.log(details);
+        details.toArray();
+        details.forEach(function(item,index){
+          var removeRecord = _this.store.peekRecord('detail',item.id);
+          removeRecord.destroyRecord();
+
+        });
+      });
+      this.store.findRecord('item',value).then(function(item){
+        item.destroyRecord();
+        //_this.set('item',null);
+        _this.set('tagOptions',[]);
+        _this.transitionToRoute({ queryParams: { id: 'null' }});
+      });
+
     }
   }
 });

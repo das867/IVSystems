@@ -3,11 +3,11 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>NAME</th>
           <th>UID</th>
-          <th>Admin Access</th>
-          <th>Last Action</th>
-          <th colspan="2">Edit</th>
+          <th>ADMIN ACCESS</th>
+          <th>EDIT</th>
+          <th>REMOVE</th>
         </tr>
       </thead>
       <tbody>
@@ -16,7 +16,6 @@
             <td>{{user.full_name}}</td>
             <td>{{user.id}}</td>
             <td>{{user.isAdmin}}</td>
-            <td></td>
             <td>
               <button class="btn btn-default center-block" {{action "editEmployee" user.id}}><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
             </td>
@@ -36,4 +35,4 @@
   </div>
 </div>
 {{new-employee-form createEmployee="createEmployee"}}
-{{edit-employee-form commitEdit="commitEdit" first_name=editUser.first_name last_name=editUser.last_name}}
+{{edit-employee-form commitEdit="commitEdit" admin=User.isAdmin first_name=editUser.first_name last_name=editUser.last_name}}

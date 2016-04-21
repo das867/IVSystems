@@ -1,0 +1,5 @@
+<select class="form-control" onchange={{action 'setVendor' value='target.value'}}>
+  {{#each vendors as |vendor|}}
+    <option value={{vendor.id}}>{{vendor.name}}</option>
+  {{/each}}
+</select>

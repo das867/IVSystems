@@ -37,6 +37,19 @@ module.exports = {
     Items:{
       collection:'Item',
       via:'vendor_id'
+    },
+    Orders:{
+      collection:'order',
+      via:'vendor_id'
     }
+  },
+  afterCreate:function(options,cb){
+    Vendor.findOne(options.id).populate('Orders').exec(function(err,vendor){
+      vendor.Orders.add({});
+      vendor.save(function(err,res){
+        console.log(res);
+        cb();
+      });
+    });
   }
 };

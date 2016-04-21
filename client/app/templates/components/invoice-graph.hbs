@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>QUANITY</th>
+          <th>ADD/REMOVE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each invoice.lineitems as |line|}}
+        <tr>
+          <td>{{line.detail_id.item_id.name}}
+            {{#if line.detail_id.item_id.comic}}
+            Issue #: {{line.detail_id.issue_num}}
+            {{/if}}
+            {{#if line.detail_id.item_id.apparel}}
+            Size: {{line.detail_id.size}}
+            {{/if}}</td>
+          <td>
+            {{input  min="0" type="number" value=line.quanity class='form-control'}}
+          </td>
+          <td>
+            <button class="btn btn-default" {{action "setQuanity" line.id}}><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+            <button class="btn btn-default" {{action "removeLineItem" line.id}}><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+          </td>
+        </tr>
+
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-primary btn-block" {{action "sendInvoice" invoice.id}}>Complete and Send Invoice</button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>CURRENT QUANITY</th>
+          <th>ADD TO INVOICE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each vendorItems as |detail|}}
+        <tr>
+          <td>{{detail.item_id.name}}
+            {{#if detail.item_id.comic}}
+            Issue #: {{detail.issue_num}}
+            {{/if}}
+            {{#if detail.item_id.apparel}}
+            Size: {{detail.size}}
+            {{/if}}
+          </td>
+          <td>{{detail.quanity}}</td>
+          <td>
+            <button class="btn btn-default center-block" {{action "addToInvoice" detail.id}}><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
