@@ -9,6 +9,18 @@ INSERT INTO vendor(id, name, strAddress, city, state, zipcode) VALUES(null, 'Bro
 INSERT INTO vendor(id, name, strAddress, city, state, zipcode) VALUES(null, 'Cain Inc','4712 Trapoole Way','Livonia','MI','92650');
 INSERT INTO vendor(id, name, strAddress, city, state, zipcode) VALUES(null, 'CollectorsRUs','1902 Renaissance Parkway','Atlanta ','GA','30308');
 
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,1,'reorder',false);
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,2,'reorder',false);
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,3,'reorder',false);
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,4,'reorder',false);
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,5,'reorder',false);
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,6,'reorder',false);
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,7,'reorder',false);
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,8,'reorder',false);
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,9,'reorder',false);
+INSERT INTO orders(id,user_id,vendor_id,type,closedInvoice) VALUES(null,1,10,'reorder',false);
+
+
 
 INSERT INTO tag(id, name) VALUES(null,'Marvel');
 INSERT INTO tag(id, name) VALUES(null,'Batman');
